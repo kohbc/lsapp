@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <a href="#" class="btn btn-primary">Sign in with Google</a>
+                            <a href="/login/google" class="btn btn-primary">Sign in with Google</a>
                         </div>
                     </form>
                 </div>

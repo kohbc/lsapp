@@ -20,6 +20,7 @@
             @include('inc.messages')
             @yield('content')
         </div>
+        @include('inc.bottombar')
     </div>
 
     <!-- Scripts  -->
