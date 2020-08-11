@@ -18,6 +18,8 @@ Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
 Route::resource('quizzes', 'QuizzesController');
+Route::resource('answers', 'AnswersController');
+
 /*
 Route::get('/', function () {
     return view('welcome');

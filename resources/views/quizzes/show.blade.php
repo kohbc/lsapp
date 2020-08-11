@@ -3,6 +3,7 @@
 @section('content')
     <a href="/quizzes" class="btn btn-default">Go Back</a>
     <h1>{{$quiz->title}}</h1>
+    <!--
     <div class=well>
         <form>
             <h3>{{$quiz->Q_1}}</h3>
@@ -13,6 +14,31 @@
             <input type="submit" value="Submit"/>
         </form>
     </div>
+    -->
+    {!! Form::open(['action' => 'AnswersController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+        <div class="form-group">
+            {{Form::radio('Q_1Answer', 'A')}}
+            {{Form::label($quiz->Q_1A)}}
+        </div>
+        <div class="form-group">
+            {{Form::radio('Q_1Answer', 'B')}}
+            {{Form::label($quiz->Q_1B)}}
+        </div>
+        <div class="form-group">
+            {{Form::radio('Q_1Answer', 'C')}}
+            {{Form::label($quiz->Q_1C)}}
+        </div>
+        <div class="form-group">
+            {{Form::radio('Q_1Answer', 'D')}}
+            {{Form::label($quiz->Q_1D)}}
+        </div>
+        <div class="form-group">
+            {{Form::hidden('quiz_id', $quiz->id)}}
+            {{Form::hidden('mark', 0)}}
+        </div>
+        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+    {!! Form::close() !!}
+
     <small>Written on {{$quiz->created_at}} by {{$quiz->user->name}}</small><br/>
     @if(!Auth::guest())
         @if(Auth::user()->id == $quiz->user_id)

@@ -9,6 +9,7 @@
             <small>Written on {{$quiz->created_at}} by {{$quiz->user->name}}</small>
         </div>
         @endforeach
+        {{$quizzes->links()}}
     @else
         <p>No quiz found</p>
     @endif
