@@ -9,6 +9,16 @@ use App\Quiz;
 class QuizzesController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -59,7 +69,7 @@ class QuizzesController extends Controller
         $quiz->user_id = auth()->user()->id;
         $quiz->save();
 
-        return redirect('/quizzes')->with('success', 'Post Created');
+        return redirect('/quizzes')->with('success', 'Quiz Created');
     }
 
     /**
@@ -83,6 +93,12 @@ class QuizzesController extends Controller
     public function edit($id)
     {
         $quiz = Quiz::find($id);
+        
+        //Check for correct user id
+        if(auth()->user()->id !== $quiz->user_id){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+
         return view('quizzes.edit')->with('quiz', $quiz);
     }
 
@@ -128,6 +144,12 @@ class QuizzesController extends Controller
     public function destroy($id)
     {
         $quiz = Quiz::find($id);
+
+        //Check for correct user id
+        if(auth()->user()->id !== $quiz->user_id){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+
         $quiz->delete();
         return redirect('/quizzes')->with('success', 'Quiz Removed');
     }

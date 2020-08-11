@@ -13,11 +13,14 @@
             <input type="submit" value="Submit"/>
         </form>
     </div>
-    <small>Written on {{$quiz->created_at}}</small><br/>
-    <a href="/quizzes/{{$quiz->id}}/edit" class="btn btn-default">Edit</a>
-
-    {!!Form::open(['action' => ['QuizzesController@destroy', $quiz->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
+    <small>Written on {{$quiz->created_at}} by {{$quiz->user->name}}</small><br/>
+    @if(!Auth::guest())
+        @if(Auth::user()->id == $quiz->user_id)
+            <a href="/quizzes/{{$quiz->id}}/edit" class="btn btn-default">Edit</a>
+            {!!Form::open(['action' => ['QuizzesController@destroy', $quiz->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
                 {{Form::hidden('_method', 'DELETE')}}
                 {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
             {!!Form::close()!!}
+        @endif
+    @endif
 @endsection

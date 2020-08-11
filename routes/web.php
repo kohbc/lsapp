@@ -17,7 +17,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
-Route::get('/homepage1', 'PagesController@homepage1');
+Route::resource('quizzes', 'QuizzesController');
 /*
 Route::get('/', function () {
     return view('welcome');
@@ -30,12 +30,10 @@ Route::get('/hello', function () {
 Route::get('/users/{id}/{name}', function($id, $name){
     return 'This is user '.$name.' with an id of '.$id;
 });
+
+Route::get('/home', 'HomeController@index')->name('home');
 */
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/dashboard', 'DashboardController@index');
 
 Route::get('/login/google', 'Auth\LoginController@redirectToProvider');

@@ -6,7 +6,7 @@
         @foreach($quizzes as $quiz)
         <div class=well>
         <h3><a href="/quizzes/{{$quiz->id}}">{{$quiz->title}}</a></h3>
-            <small>Written on {{$quiz->created_at}}</small>
+            <small>Written on {{$quiz->created_at}} by {{$quiz->user->name}}</small>
         </div>
         @endforeach
     @else

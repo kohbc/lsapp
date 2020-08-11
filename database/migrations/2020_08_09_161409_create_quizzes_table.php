@@ -22,6 +22,7 @@ class CreateQuizzesTable extends Migration
             $table->string('Q_1C');
             $table->string('Q_1D');
             $table->string('Q_1Answer');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
