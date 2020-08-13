@@ -1,66 +1,11 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-bottom">
     <div class="container">
         <div class="navbar-header">
-
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
-
-            <ul class="nav navbar-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="/posts">Blog</a></li>
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-                            <!--Donno why class doesn't work properly
-                            <ul class="dropdown-menu">
-                            -->
-                            <li><a href="/dashboard">Dashboard</a></li>
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                            <!--
-                            </ul>
-                            -->
-                    </li>
-                @endif
-            </ul>
+            <a href="/resources"><img src="/storage/cover_image/baseline_open_in_new_white_18dp.png" class="center" alt="resources"></a>
+            <a href="/account"><img src="/storage/cover_image/baseline_account_circle_white_18dp.png" class="center" alt="account"></a>
+            <a href="/activities"><img src="/storage/cover_image/baseline_videogame_asset_white_18dp.png" class="center" alt="activities"></a>
+            <a href="/social"><img src="/storage/cover_image/baseline_supervisor_account_white_18dp.png" class="center" alt="social"></a>
+            <a href="/ranking"><img src="/storage/cover_image/baseline_analytics_white_18dp.png" class="center" alt="ranking"></a>
         </div>
     </div>
 </nav>
