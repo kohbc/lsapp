@@ -25,4 +25,32 @@ class PagesController extends Controller
         return view('pages.services')->with($data);
     }
 
+    //TEA App Bottom Bar
+    public function resources(){
+        return view('pages.resources');
+    }
+
+    public function activities(){
+        return view('pages.activities');
+    }
+
+    public function account(){
+        return view('pages.account');
+    }
+
+    public function social(){
+        return view('pages.social');
+    }
+
+    public function ranking(){
+        return view('pages.ranking');
+    }
+
+    public function show(){
+        return view('pages.show');
+    }
+
+    public function quizlist(){
+        return view('pages.quizlist');
+    }
 }
