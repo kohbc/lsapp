@@ -45,12 +45,4 @@ class PagesController extends Controller
     public function ranking(){
         return view('pages.ranking');
     }
-
-    public function show(){
-        return view('pages.show');
-    }
-
-    public function quizlist(){
-        return view('pages.quizlist');
-    }
 }
