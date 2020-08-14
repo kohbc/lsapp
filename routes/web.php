@@ -19,7 +19,7 @@ Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
 Route::resource('quizzes', 'QuizzesController');
 Route::resource('answers', 'AnswersController');
-Route::resource('/resources', 'PagesController@resources');
+Route::get('/resources', 'PagesController@resources');
 Route::get('/activities', 'PagesController@activities');
 Route::get('/account', 'PagesController@account');
 Route::get('/social', 'PagesController@social');
