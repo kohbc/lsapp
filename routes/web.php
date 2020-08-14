@@ -19,6 +19,14 @@ Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
 Route::resource('quizzes', 'QuizzesController');
 Route::resource('answers', 'AnswersController');
+Route::resource('/resources', 'PagesController@resources');
+Route::get('/activities', 'PagesController@activities');
+Route::get('/account', 'PagesController@account');
+Route::get('/social', 'PagesController@social');
+Route::get('/ranking', 'PagesController@ranking');
+Route::get('/quizzes', 'PagesController@quizzes');
+Route::get('/show', 'PagesController@show');
+Route::get('/quizlist', 'PagesController@quizlist');
 
 /*
 Route::get('/', function () {
