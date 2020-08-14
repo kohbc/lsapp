@@ -28,6 +28,7 @@
               <li><a href="/services">Services</a></li>
               <!-- <li><a href="/posts">Post</a></li> -->
               <li><a href="/quizzes">Quiz</a></li>
+              <li><a href="/answers">Answer</a></li>
             </ul>
 
             <!-- Right Side Of Navbar -->
