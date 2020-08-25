@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>TEA</title>
+        <style>
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="tea">TEA</h1>
+<p>TEA App</p>
+<h2 id="preface">Preface</h2>
+<p>TEA App is currently only running within a localhost environment. As it is build using the laravel framework with xampp, apache and php, this means there is quite a large set up process to get it up and running.</p>
+<h2 id="required-software">Required Software</h2>
+<p>We use a few programs during the environment setup process.</p>
+<h3 id="xampp">xampp</h3>
+<p>Install xampp from <a href="https://www.apachefriends.org/index.html">https://www.apachefriends.org/index.html</a></p>
+<h3 id="composer">composer</h3>
+<p>Install composer from <a href="https://getcomposer.org/download/">https://getcomposer.org/download/</a></p>
+<p>During installation, point composer to your php.exe within \\xampp\php</p>
+<h2 id="initial-setup">Initial Setup</h2>
+<p>Navigate to your new \\xampp\htdocs directory</p>
+<p>Place the \lsapp folder inside the htdocs directory.</p>
+<h3 id="dependencies">Dependencies</h3>
+<p>Next, we must open cmd and navigate to the \\xampp\htdocs\lsapp directory.</p>
+<p>Using the following composer command from the \lsapp directory we find any missing dependencies.</p>
+<pre><code>\\xampp\htdocs\lsapp&gt; composer update
+</code></pre>
+<p>Then we install them using another command</p>
+<pre><code>\\xampp\htdocs\lsapp&gt; composer update
+</code></pre>
+<h3 id="virtual-host">Virtual host</h3>
+<p>Now we set up a virtual host.</p>
+<p>Navigate to \\xampp\apache\conf\extra</p>
+<p>Edit the &quot;httpd-vhosts.conf&quot; file in a text editer and add the following at the bottom</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+    DocumentRoot &quot;C:/xampp/htdocs&quot;
+    ServerName localhost
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+    DocumentRoot &quot;C:/xampp/htdocs/lsapp/public&quot;
+    ServerName lsapp.test
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>Next we must add our new localhost to our windows hosts file. Run notepad as an administrator and choose File&gt;Open.</p>
+<p>Navigate to &quot;C:\Windows\System32\drivers\etc&quot; and open the &quot;hosts&quot; file</p>
+<p>Add the following lines to the bottom of the file:</p>
+<pre><code>127.0.0.1 localhost
+127.0.0.1 lsapp.test
+</code></pre>
+<h3 id="database">Database</h3>
+<p>Navigate to \\xampp and run &quot;xampp-control.exe&quot; as administrator</p>
+<p>Start the Apache module using the start button</p>
+<p>In a browser, navigate to localhost/phpmyadmin.</p>
+<p>Create a new database from the left meny and name it lsapp</p>
+<p>In cmd, navigate to \\xampp\htdocs\lsapp</p>
+<pre><code>\\xampp\htdocs\lsapp&gt;php artisan migrate
+</code></pre>
+<p>Empty tables will now be created for you in the database</p>
+<h2 id="using-tea">Using TEA</h2>
+<p>In chrome, press f12 and then press ctrl+shift+m to set the view</p>
+<p>TEA is now connected to the localhost server. navigate to lsapp.test in your browser</p>
+<p>KAI's Section</p>
+<h2 id="conclusion">Conclusion</h2>
+
+    </body>
+    </html>

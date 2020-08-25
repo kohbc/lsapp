@@ -1,79 +1,90 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# TEA
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+TEA App
 
-## About Laravel
+## Preface
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+TEA App is currently only running within a localhost environment. As it is build using the laravel framework with xampp, apache and php, this means there is quite a large set up process to get it up and running.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Required Software
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+We use a few programs during the environment setup process.
 
-## Learning Laravel
+### xampp
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Install xampp from https://www.apachefriends.org/index.html
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### composer
 
-## Laravel Sponsorss
+Install composer from https://getcomposer.org/download/
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+During installation, point composer to your php.exe within \\\xampp\php
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+## Initial Setup
 
-## Contributing
+Navigate to your new \\\xampp\htdocs directory
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Place the \\lsapp folder inside the htdocs directory.
 
-## Code of Conduct
+### Dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Next, we must open cmd and navigate to the \\\xampp\htdocs\lsapp directory.
 
-## Security Vulnerabilities
+Using the following composer command from the \lsapp directory we find any missing dependencies.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    \\xampp\htdocs\lsapp> composer update
 
-## License
+Then we install them using another command
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    \\xampp\htdocs\lsapp> composer install
+
+### Virtual host
+
+Now we set up a virtual host.
+
+Navigate to \\\xampp\apache\conf\extra
+
+Edit the "httpd-vhosts.conf" file in a text editer and add the following at the bottom
+
+    <VirtualHost *:80>
+        DocumentRoot "C:/xampp/htdocs"
+        ServerName localhost
+    </VirtualHost>
+
+    <VirtualHost *:80>
+        DocumentRoot "C:/xampp/htdocs/lsapp/public"
+        ServerName lsapp.test
+    </VirtualHost>
+
+Next we must add our new localhost to our windows hosts file. Run notepad as an administrator and choose File>Open.
+
+Navigate to "C:\Windows\System32\drivers\etc" and open the "hosts" file
+
+Add the following lines to the bottom of the file:
+
+    127.0.0.1 localhost
+    127.0.0.1 lsapp.test
+
+### Database
+
+Navigate to \\\xampp and run "xampp-control.exe" as administrator
+
+Start the Apache module using the start button
+
+In a browser, navigate to localhost/phpmyadmin.
+
+Create a new database from the left meny and name it lsapp
+
+In cmd, navigate to \\\xampp\htdocs\lsapp
+
+    \\xampp\htdocs\lsapp>php artisan migrate
+
+Empty tables will now be created for you in the database
+
+## Using TEA
+
+In chrome, press f12 and then press ctrl+shift+m to set the view
+
+TEA is now connected to the localhost server. navigate to lsapp.test in your browser
+
+To create and answer a quiz, you must register an account.
