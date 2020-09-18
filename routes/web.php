@@ -19,11 +19,11 @@ Route::get('/services', 'PagesController@services');
 Route::resource('posts', 'PostsController');
 Route::resource('quizzes', 'QuizzesController');
 Route::resource('answers', 'AnswersController');
-Route::get('/resources', 'PagesController@resources');
-Route::get('/activities', 'PagesController@activities');
-Route::get('/account', 'PagesController@account');
-Route::get('/social', 'PagesController@social');
-Route::get('/ranking', 'PagesController@ranking');
+Route::get('/resources', 'PagesController@resources')->name('resources.index');
+Route::get('/activities', 'PagesController@activities')->name('activities.index');
+Route::get('/account', 'PagesController@account')->name('account.index');
+Route::get('/social', 'PagesController@social')->name('social.index');
+Route::get('/ranking', 'PagesController@ranking')->name('ranking.index');
 
 /*
 Route::get('/', function () {

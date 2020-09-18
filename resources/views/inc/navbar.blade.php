@@ -11,9 +11,23 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <!-- <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
-            </a>
+            </a> -->
+
+            <a href="#" onclick="window.history.go(-1)"><img src="/storage/cover_image/baseline_arrow_back_white_18dp.png" class="left" alt="back" style="width:25px; height:25px; margin:10px;"></a>
+
+            @if (Route::currentRouteName() === 'resources.index')
+                <span style="color:white; font-weight:bold; font-family:  Arial, Helvetica, sans-serif; font-size:125%;" class="left">Resources</span>
+            @elseif (Route::currentRouteName() === 'account.index')
+                <span style="color:white; font-weight:bold; font-family:  Arial, Helvetica, sans-serif; font-size:125%;" class="left">My Account</span>
+            @elseif (Route::currentRouteName() === 'activities.index')
+                <span style="color:white; font-weight:bold; font-family:  Arial, Helvetica, sans-serif; font-size:125%;" class="left">Activities</span>
+            @elseif (Route::currentRouteName() === 'social.index')
+                <span style="color:white; font-weight:bold; font-family:  Arial, Helvetica, sans-serif; font-size:125%;" class="left">Colleagues</span>
+            @elseif (Route::currentRouteName() === 'ranking.index')
+                <span style="color:white; font-weight:bold; font-family:  Arial, Helvetica, sans-serif; font-size:125%;" class="left">Leaderboard</span>
+            @endif
         </div>
 
         <div class="collapse navbar-collapse" id="app-navbar-collapse">

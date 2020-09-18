@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
+  <style>
         .navbar-inverse {
             background-color: #4A148C;
         }
@@ -30,11 +30,12 @@
             float: left;
             display: block;
             color: #f2f2f2;
-            text-align: left;
+            text-align: center;
             padding: 14px 16px;
             text-decoration: none;
             font-size: 12.85px;
-            width: 81.84px;
+            width: 74.5px;
+            height: 49.5px;
         }
 
         .navbar-bottom a:hover {
@@ -43,8 +44,7 @@
         }
 
         .navbar-bottom a.active {
-            background-color: rgb(52, 184, 0);
-            color: white;
+            width: 25%;
         }
         
         .center {
@@ -53,6 +53,7 @@
             margin-right: auto;
             width: 50%;
         }
+
     </style>
 </head>
 <body>
@@ -71,5 +72,6 @@
     <script>
         CKEDITOR.replace( 'article-ckeditor' );
     </script>
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 </body>
 </html>
