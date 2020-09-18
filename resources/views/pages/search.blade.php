@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1">
 
-        <title>{{config('app.name', 'LSAPP')}}</title>
+        <title>{{config('app.name', 'TEA')}}</title>
 
     </head>
     <body>

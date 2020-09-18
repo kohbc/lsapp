@@ -36,14 +36,16 @@
                 &nbsp;
             </ul>
 
+            <!--
             <ul class="nav navbar-nav">
               <li><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
-              <!-- <li><a href="/posts">Post</a></li> -->
+              <li><a href="/posts">Post</a></li>
               <li><a href="/quizzes">Quiz</a></li>
+              <li><a href="/answers">Answer</a></li>
             </ul>
-
+            -->
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
@@ -55,24 +57,20 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
-                            <!--Donno why class doesn't work properly
                             <ul class="dropdown-menu">
-                            -->
-                            <li><a href="/dashboard">Dashboard</a></li>
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                              document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
+                                <li><a href="/dashboard">Dashboard</a></li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                            <!--
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
                             </ul>
-                            -->
                     </li>
                 @endif
             </ul>

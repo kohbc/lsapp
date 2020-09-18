@@ -9,7 +9,6 @@
             <small>Written on {{$answer->created_at}}</small>
         </div>
         @endforeach
-        {{$answers->links()}}
     @else
         <p>No quiz found</p>
     @endif
