@@ -4,9 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
+use App\User;
 
 class AnswersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +25,10 @@ class AnswersController extends Controller
      */
     public function index()
     {
-        $answers = Answer::orderBy('created_at', 'desc')->paginate(5);
-        return view('answers.index')->with('answers', $answers);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        //$answers = Answer::orderBy('created_at', 'desc')->paginate(5);
+        return view('answers.index')->with('answers', $user->answers);
     }
 
     /**
