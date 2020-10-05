@@ -1,13 +1,14 @@
 /* Bottom Navigation Bar */
 
 .bar-navigation {
+    /* top level container for the navigation bar */
     position: absolute;
     width: 360px;
     height: 64px;
 }
 
 .bar-navigation.surface {
-    /* Surface */
+    /* Surface for navigation bar */
     position: absolute;
     height: 56px;
     left: 0px;
