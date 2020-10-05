@@ -1,10 +1,15 @@
 /* Bottom Navigation Bar */
 
-.bar-navigation.surface {
-    /* Surface */
+.bar-navigation {
     position: absolute;
     width: 360px;
     height: 64px;
+}
+
+.bar-navigation.surface {
+    /* Surface */
+    position: absolute;
+    height: 56px;
     left: 0px;
     bottom: 0px;
     top: 8px;
@@ -99,13 +104,17 @@
 
 /* System Bar */
 
-.bar-system.surface {
-    /* System Bar / Primary */
+.bar-system {
     position: absolute;
     width: 360px;
     height: 24px;
-    top: 0px;
     overflow-y: scroll;
+}
+
+.bar-system.surface {
+    /* System Bar / Primary */
+    position: absolute;
+    top: 0px;
 
     /* 1 / Primary — 800+ */
     background: #12005E;
@@ -120,11 +129,16 @@
 }
 
 /* App Bar */
-.bar-app.surface {
-    /* App Bar / Top App Bar / Regular / Flat / Primary Color */
+
+.bar-app {
     position: absolute;
     width: 360px;
     height: 56px;
+}
+
+.bar-app.surface {
+    /* App Bar / Top App Bar / Regular / Flat / Primary Color */
+    position: absolute;
     left: 0px;
     top: 0px;
 
@@ -181,11 +195,13 @@
 
 /* Tab Bar */
 
-.bar-tab.surface {
+.bar-tab {
     position: absolute;
     width: 360px;
     height: 48px;
+}
 
+.bar-tab.surface {
     /* 1 / Primary — 600* */
     background: #4A148C;
 
