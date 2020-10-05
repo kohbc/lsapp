@@ -63,59 +63,38 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
-.bar-navigation.item.one {
-    /* Item One */
+.bar-navigation.item {
     position: absolute;
     height: 56px;
     width: 72px;
-    left: 0%;
-    right: 80%;
     top: 8px;
     bottom: 0px;
+}
+
+.bar-navigation.item.one {
+    /* Item One */
+    left: 0%;
+    right: 80%;
 }
 
 .bar-navigation.item.two {
-    /* Item Two */
-    position: absolute;
-    height: 56px;
-    width: 72px;
     left: 20%;
     right: 60%;
-    top: 8px;
-    bottom: 0px;
 }
 
 .bar-navigation.item.three {
-    /* Item Three */
-    position: absolute;
-    height: 56px;
-    width: 72px;
     left: 40%;
     right: 40%;
-    top: 8px;
-    bottom: 0px;
 }
 
 .bar-navigation.item.four {
-    /* Item Four */
-    position: absolute;
-    height: 56px;
-    width: 72px;
     left: 60%;
     right: 20%;
-    top: 8px;
-    bottom: 0px;
 }
 
 .bar-navigation.item.five {
-    /* Item Five */
-    position: absolute;
-    height: 56px;
-    width: 72px;
     left: 80%;
     right: 0%;
-    top: 8px;
-    bottom: 0px;
 }
 
 /* System Bar */
@@ -178,39 +157,26 @@
     color: #FFFFFF;
 }
 
-.bar-app.icon-back {
-    /* Icon / teaBack / Fill */
+.bar-app.icon {
     position: absolute;
     width: 24px;
     height: 24px;
-    left: 16px;
     top: calc(50% - 24px/2);
 
     /* White — High Emphasis */
     background: #FFFFFF;
 }
 
-.bar-app.icon-search {
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    right: 52px;
-    top: calc(50% - 24px/2);
-
-    /* All / White — High Emphasis */
-    background: #FFFFFF;
+.bar-app.icon.back {
+    left: 16px;
 }
 
-.bar-app.icon-overflow {
-    /* Overflow */
-    position: absolute;
-    width: 12px;
-    height: 24px;
-    right: 16px;
-    top: calc(50% - 24px/2);
+.bar-app.icon.search {
+    right: 52px;
+}
 
-    /* All / White — High Emphasis */
-    background: #FFFFFF;
+.bar-app.icon.overflow {
+    right: 16px;
 }
 
 /* Tab Bar */
