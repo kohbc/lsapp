@@ -36,6 +36,10 @@ class QuizzesController extends Controller
      */
     public function create()
     {
+        //Check for user privilege level
+        if(auth()->user()->level < 2){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
         return view('quizzes.create');
     }
 
@@ -47,6 +51,10 @@ class QuizzesController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->level < 2){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+
         $this->validate($request, [
             'title' => 'required',
             'Q_1' => 'required',
@@ -60,6 +68,13 @@ class QuizzesController extends Controller
         //create a new Quiz
         $quiz = new Quiz;
         $quiz->title = $request->input('title');
+        //Check for empty input
+        if($request->input('youtube') == null || $request->input('youtube') == ""){
+            $quiz->youtube = "NULL";
+        }
+        else{
+            $quiz->youtube = $request->input('youtube');
+        }
         $quiz->Q_1 = $request->input('Q_1');
         $quiz->Q_1A = $request->input('Q_1A');
         $quiz->Q_1B = $request->input('Q_1B');
@@ -93,6 +108,11 @@ class QuizzesController extends Controller
     public function edit($id)
     {
         $quiz = Quiz::find($id);
+
+        //Check for user privilege level
+        if(auth()->user()->level < 2){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
         
         //Check for correct user id
         if(auth()->user()->id !== $quiz->user_id){
@@ -111,6 +131,11 @@ class QuizzesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //Check for user privilege level
+        if(auth()->user()->level < 2){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+
         $this->validate($request, [
             'title' => 'required',
             'Q_1' => 'required',
@@ -144,6 +169,11 @@ class QuizzesController extends Controller
     public function destroy($id)
     {
         $quiz = Quiz::find($id);
+
+        //Check for user privilege level
+        if(auth()->user()->level < 2){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
 
         //Check for correct user id
         if(auth()->user()->id !== $quiz->user_id){

@@ -8,6 +8,10 @@
             {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
         </div>
         <div class="form-group">
+            {{Form::label('youtube', 'YouTube Video')}}
+            {{Form::text('youtube', '', ['class' => 'form-control', 'placeholder' => 'YouTube link here (optional)'])}}
+        </div>
+        <div class="form-group">
             {{Form::label('Q_1', 'Quiz 1')}}
             {{Form::text('Q_1', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 question'])}}
         </div>
