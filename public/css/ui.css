@@ -200,6 +200,7 @@
     position: absolute;
     width: 360px;
     height: 48px;
+    overflow-x: scroll;
 }
 
 .bar-tab.surface {
