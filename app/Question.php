@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Quiz extends Model
+class Question extends Model
 {
     //Table Name
-    protected $table = 'quizzes';
+    protected $table = 'questions';
     //Primary Key
     public $primaryKey = 'id';
     //Timestamps
@@ -16,8 +16,12 @@ class Quiz extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
-    
-    public function questions(){
-        return $this->hasMany('App\Question');
+
+    public function quiz(){
+        return $this->belongsTo('App\Quiz');
+    }
+
+    public function answers(){
+        return $this->hasMany('App\Answer');
     }
 }

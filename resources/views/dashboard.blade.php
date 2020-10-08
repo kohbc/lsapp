@@ -6,7 +6,11 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>Username: {{Auth::user()->name}} E-mail: {{Auth::user()->email}}</h3><br/>
+                    <div class="col-md-4 col-sm-4">
+                        <img src="{{Auth::user()->avatar}}">
+                        <h3>Username: {{Auth::user()->name}} E-mail: {{Auth::user()->email}}</h3><br/>
+                    
+                    </div>
                     @if(Auth::user()->level >= 2)
                         <a href="/quizzes/create" class="btn btn-primary">Create Quiz</a>
                         <h3>Your Quizzes</h3>
@@ -31,7 +35,7 @@
                                 @endforeach
                             </table>
                         @else
-                            <p>You have no post.</p>
+                            <p>You have no quiz.</p>
                         @endif
                     @endif
                 </div>

@@ -13,6 +13,8 @@
             {{Form::label('youtube', 'YouTube Video')}}
             {{Form::text('youtube', '', ['class' => 'form-control', 'placeholder' => 'YouTube link here (optional)'])}}
         </div>
+
+<!-- keeping this in case fron-end needs it
         <div class="form-group">
             {{Form::label('question', 'Question')}}
             {{Form::text('question', '', ['class' => 'form-control', 'placeholder' => 'Question'])}}
@@ -33,6 +35,7 @@
             {{Form::radio('answer', 'D', false, ['class' => 'myRadio'])}}
             {{Form::text('D', '', ['class' => 'foo2', 'placeholder' => 'D', 'rows' => 10, 'cols' => 35])}}
         </div>
+-->
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection
