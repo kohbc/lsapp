@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Quiz;
+use App\Answer;
 
 class QuizzesController extends Controller
 {
@@ -27,6 +28,8 @@ class QuizzesController extends Controller
     {
         $quizzes = Quiz::orderBy('created_at', 'desc')->paginate(5);
         return view('quizzes.index')->with('quizzes', $quizzes);
+        //$quiz = Quiz::orderBy('created_at', 'desc')->skip(1)->first();
+        //return view('quizzes.index')->with('quiz', $quiz);
     }
 
     /**
@@ -56,13 +59,7 @@ class QuizzesController extends Controller
         }
 
         $this->validate($request, [
-            'title' => 'required',
-            'Q_1' => 'required',
-            'Q_1A' => 'required',
-            'Q_1B' => 'required',
-            'Q_1C' => 'required',
-            'Q_1D' => 'required',
-            'Q_1Answer' => 'required'
+            'title' => 'required'
         ]);
 
         //create a new Quiz
@@ -75,16 +72,10 @@ class QuizzesController extends Controller
         else{
             $quiz->youtube = $request->input('youtube');
         }
-        $quiz->Q_1 = $request->input('Q_1');
-        $quiz->Q_1A = $request->input('Q_1A');
-        $quiz->Q_1B = $request->input('Q_1B');
-        $quiz->Q_1C = $request->input('Q_1C');
-        $quiz->Q_1D = $request->input('Q_1D');
-        $quiz->Q_1Answer = $request->input('Q_1Answer');
         $quiz->user_id = auth()->user()->id;
         $quiz->save();
 
-        return redirect('/quizzes')->with('success', 'Quiz Created');
+        return redirect('/dashboard')->with('success', 'Quiz Created');
     }
 
     /**
@@ -107,19 +98,19 @@ class QuizzesController extends Controller
      */
     public function edit($id)
     {
-        $quiz = Quiz::find($id);
-
         //Check for user privilege level
         if(auth()->user()->level < 2){
             return redirect('/quizzes')->with('error', 'Unauthorized access');
         }
-        
+
+        $quiz = Quiz::find($id);
+
         //Check for correct user id
         if(auth()->user()->id !== $quiz->user_id){
             return redirect('/quizzes')->with('error', 'Unauthorized access');
         }
 
-        return view('quizzes.edit')->with('quiz', $quiz);
+        return view('quizzes.edit')->with('quiz', $quiz)->with('questions', $quiz->questions);
     }
 
     /**
@@ -137,27 +128,23 @@ class QuizzesController extends Controller
         }
 
         $this->validate($request, [
-            'title' => 'required',
-            'Q_1' => 'required',
-            'Q_1A' => 'required',
-            'Q_1B' => 'required',
-            'Q_1C' => 'required',
-            'Q_1D' => 'required',
-            'Q_1Answer' => 'required'
+            'title' => 'required'
         ]);
 
-        //create a new quiz
+        //find existing quiz
         $quiz = Quiz::find($id);
         $quiz->title = $request->input('title');
-        $quiz->Q_1 = $request->input('Q_1');
-        $quiz->Q_1A = $request->input('Q_1A');
-        $quiz->Q_1B = $request->input('Q_1B');
-        $quiz->Q_1C = $request->input('Q_1C');
-        $quiz->Q_1D = $request->input('Q_1D');
-        $quiz->Q_1Answer = $request->input('Q_1Answer');
+        //Check for empty input
+        if($request->input('youtube') == null || $request->input('youtube') == ""){
+            $quiz->youtube = "NULL";
+        }
+        else{
+            $quiz->youtube = $request->input('youtube');
+        }
+        $quiz->user_id = auth()->user()->id;
         $quiz->save();
 
-        return redirect('/quizzes')->with('success', 'Quiz Updated');
+        return redirect('/dashboard')->with('success', 'Quiz Updated');
     }
 
     /**

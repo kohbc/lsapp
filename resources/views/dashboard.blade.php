@@ -31,7 +31,7 @@
                                 @endforeach
                             </table>
                         @else
-                            <p>You have no post.</p>
+                            <p>You have no quiz.</p>
                         @endif
                     @endif
                 </div>

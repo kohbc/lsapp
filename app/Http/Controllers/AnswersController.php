@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Answer;
 use App\User;
+use App\Quiz;
 
 class AnswersController extends Controller
 {
@@ -50,18 +51,27 @@ class AnswersController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'Q_1Answer' => 'required'
+            'MCQ' => 'required'
         ]);
 
         //create a new Quiz
         $answer = new Answer;
-        $answer->Q_1Answer = $request->input('Q_1Answer');
-        $answer->quiz_id = $request->input('quiz_id');;
+        $answer->answer = $request->input('MCQ');
+        $answer->question_id = $request->input('question_id');
         $answer->user_id = auth()->user()->id;
-        $answer->mark = $request->input('mark');;
+        if($request->input('MCQ') == $request->input('question_answer')){
+            $answer->mark = '1';
+        }
+        else{
+            $answer->mark = '0';
+        }
         $answer->save();
-
-        return redirect('/answers')->with('success', 'Answer Created');
+        $quiz_id = $request->input('quiz_id');
+        $counting = $request->input('counting');
+        $counting = $counting + 1;
+        $quiz = Quiz::find($quiz_id);
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
+        //return redirect()->route('question_next', ['quiz_id' => $quiz_id, 'counting' => $counting])->with('success', "Answer saved");
     }
 
     /**
@@ -76,7 +86,7 @@ class AnswersController extends Controller
 
         //Check for correct user id
         if(auth()->user()->id !== $answer->user_id){
-            return redirect('/quizzes')->with('error', 'Unauthorized access');
+            return redirect('/answers')->with('error', 'Unauthorized access');
         }
 
         return view('answers.show')->with('answer', $answer);
