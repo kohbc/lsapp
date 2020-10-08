@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Quizzes</h1>
+    <h1>Available Quizzes</h1>
     @if(count($quizzes) > 0)
         @foreach($quizzes as $quiz)
         <div class=well>

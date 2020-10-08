@@ -38,7 +38,7 @@ class AnswersController extends Controller
      */
     public function create()
     {
-        //
+        //Not relevant in this controller
     }
 
     /**
@@ -73,6 +73,12 @@ class AnswersController extends Controller
     public function show($id)
     {
         $answer = Answer::find($id);
+
+        //Check for correct user id
+        if(auth()->user()->id !== $answer->user_id){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+
         return view('answers.show')->with('answer', $answer);
     }
 
@@ -84,7 +90,7 @@ class AnswersController extends Controller
      */
     public function edit($id)
     {
-        //
+        //not being implemented at the moment
     }
 
     /**
@@ -96,7 +102,7 @@ class AnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //not being implemented at the moment
     }
 
     /**
@@ -107,6 +113,6 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //not being implemented at the moment
     }
 }
