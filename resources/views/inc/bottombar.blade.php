@@ -1,7 +1,7 @@
-<nav class="navbar navbar-bottom">
+<nav class="navbar-bottom">
     <div class="container">
         <div class="navbar-header">
-            <a class="{{(Route::currentRouteName() === 'resources.index') ? 'active' : ''}}" href="/resources"><img src="/storage/cover_image/baseline_open_in_new_white_18dp.png" class="center " alt="resources">
+            <a class="{{(Route::currentRouteName() === 'resources.index') ? 'active' : ''}}" href="/resources"><img src="/storage/cover_image/baseline_open_in_new_white_18dp.png" class="center" alt="resources">
                 @if (Route::currentRouteName() === 'resources.index')
                     <span>Resources</span>
                 @endif
