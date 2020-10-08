@@ -8,28 +8,28 @@
             {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
         </div>
         <div class="form-group">
-            {{Form::label('Q_1', 'Quiz 1')}}
-            {{Form::text('Q_1', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 question'])}}
+            {{Form::label('description', 'Description')}}
+            {{Form::textarea('description', '', ['class' => 'foo', 'placeholder' => 'Description', 'rows' => 10, 'cols' => 44.75])}}
         </div>
         <div class="form-group">
-            {{Form::label('Q_1A', 'Quiz 1 Option A')}}
-            {{Form::text('Q_1A', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 A'])}}
+            {{Form::label('question', 'Question')}}
+            {{Form::text('question', '', ['class' => 'form-control', 'placeholder' => 'Question'])}}
         </div>
         <div class="form-group">
-            {{Form::label('Q_1B', 'Quiz 1 Option B')}}
-            {{Form::text('Q_1B', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 B'])}}
+            {{Form::radio('answer', 'A', false, ['class' => 'myRadio'])}}
+            {{Form::text('A', '', ['class' => 'foo2', 'placeholder' => 'A', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('Q_1C', 'Quiz 1 Option C')}}
-            {{Form::text('Q_1C', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 C'])}}
+            {{Form::radio('answer', 'B', false, ['class' => 'myRadio'])}}
+            {{Form::text('B', '', ['class' => 'foo2', 'placeholder' => 'B', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('Q_1D', 'Quiz 1 Option D')}}
-            {{Form::text('Q_1D', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 D'])}}
+            {{Form::radio('answer', 'C', false, ['class' => 'myRadio'])}}
+            {{Form::text('C', '', ['class' => 'foo2', 'placeholder' => 'C', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('Q_1Answer', 'Quiz 1 Answer')}}
-            {{Form::text('Q_1Answer', '', ['class' => 'form-control', 'placeholder' => 'Quiz 1 Answer'])}}
+            {{Form::radio('answer', 'D', false, ['class' => 'myRadio'])}}
+            {{Form::text('D', '', ['class' => 'foo2', 'placeholder' => 'D', 'rows' => 10, 'cols' => 35])}}
         </div>
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}

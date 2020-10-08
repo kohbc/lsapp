@@ -3,11 +3,10 @@
 .bar-navigation.surface {
     /* Surface */
     position: absolute;
-    width: 360px;
+    width: 100%;
     height: 64px;
     left: 0px;
     bottom: 0px;
-    top: 8px;
 
     /* 1 / Primary — 600* */
     background: #4A148C;
