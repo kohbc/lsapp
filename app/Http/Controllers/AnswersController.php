@@ -29,7 +29,7 @@ class AnswersController extends Controller
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         //$answers = Answer::orderBy('created_at', 'desc')->paginate(5);
-        return view('answers.index')->with('answers', $user->answers);
+        return view('answers.index')->with('answers', $user->answers); 
     }
 
     /**
