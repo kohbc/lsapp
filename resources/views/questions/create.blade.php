@@ -8,24 +8,20 @@
             {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Title'])}}
         </div>
         <div class="form-group">
-            {{Form::label('A', 'Option A')}}
-            {{Form::text('A', '', ['class' => 'form-control', 'placeholder' => 'Option A'])}}
+            {{Form::radio('answer', 'A', false, ['class' => 'myRadio'])}}
+            {{Form::text('A', '', ['class' => 'foo2', 'placeholder' => 'A', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('B', 'Option B')}}
-            {{Form::text('B', '', ['class' => 'form-control', 'placeholder' => 'Option B'])}}
+            {{Form::radio('answer', 'B', false, ['class' => 'myRadio'])}}
+            {{Form::text('B', '', ['class' => 'foo2', 'placeholder' => 'B', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('C', 'Option C')}}
-            {{Form::text('C', '', ['class' => 'form-control', 'placeholder' => 'Option C'])}}
+            {{Form::radio('answer', 'C', false, ['class' => 'myRadio'])}}
+            {{Form::text('C', '', ['class' => 'foo2', 'placeholder' => 'C', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('D', 'Option D')}}
-            {{Form::text('D', '', ['class' => 'form-control', 'placeholder' => 'Option D'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('answer', 'Answer')}}
-            {{Form::text('answer', '', ['class' => 'form-control', 'placeholder' => 'answer'])}}
+            {{Form::radio('answer', 'D', false, ['class' => 'myRadio'])}}
+            {{Form::text('D', '', ['class' => 'foo2', 'placeholder' => 'D', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
             {{Form::label('explanation', 'Explanation')}}
