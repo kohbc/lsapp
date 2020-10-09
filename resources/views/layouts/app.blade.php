@@ -18,7 +18,7 @@
         .navbar-inverse {
             background-color: #4A148C;
         }
-
+/* 
         .navbar-bottom {
             overflow: hidden;
             background-color: #4A148C;
@@ -26,7 +26,7 @@
             bottom: 0;
             width: 100%;
             margin-bottom: 0;
-        }
+        } */
 
         .navbar-bottom a {
             float: left;
