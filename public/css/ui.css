@@ -3,7 +3,7 @@
 .bar-navigation {
     /* top level container for the navigation bar */
     position: absolute;
-    width: 100%;
+    width: 360px;
     height: 64px;
 }
 
@@ -12,7 +12,7 @@
     position: absolute;
     height: 56px;
     left: 0px;
-    bottom: 0px;
+    bottom: 0;
 
     /* 1 / Primary — 600* */
     background: #4A148C;
@@ -21,42 +21,49 @@
     box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.2);
 }
 
-.bar-navigation.enabled.icon {
+.bar-navigation.enabledicon {
     /* icon */
     position: absolute;
     width: 24px;
     height: 24px;
     left: calc(50% - 24px/2);
     top: calc(50% - 24px/2 - 8px);
+    margin-left: 5px;
 
     /* All / White — High Emphasis */
-    background: #FFFFFF;
+    /* background: #FFFFFF; */
 }
 
-.bar-navigation.enabled.label {
-    /* Label */
+.bar-navigation.enabledicon2 {
+    /* icon */
     position: absolute;
-    left: 4px;
-    right: 4px;
-    top: 58.57%;
-    bottom: 12.86%;
+    width: 24px;
+    height: 24px;
+    left: 30%;
+    top: calc(50% - 24px/2 - 8px);
+
+    /* All / White — High Emphasis */
+    /* background: #FFFFFF; */
+}
+
+.bar-navigation.enabledlabel {
+    /* Label */
+    top: 42%;
 
     /* Caption / Roboto Regular */
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
+    line-height: 45px;
 
     /* identical to box height, or 133% */
-    text-align: center;
     letter-spacing: 0.4px;
+    margin-left: 10px;
 
     /* All / White — High Emphasis */
     color: #FFFFFF;
 }
 
-.bar-navigation.disabled.icon {
+.bar-navigation.disabledicon {
     /* Icon / Circle / Fill */
     position: absolute;
     width: 24px;
@@ -65,41 +72,33 @@
     top: calc(50% - 24px/2);
 
     /* All / White — Disabled */
-    background: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .bar-navigation.item {
     position: absolute;
-    height: 56px;
     width: 72px;
-    top: 8px;
-    bottom: 0px;
 }
 
 .bar-navigation.item.one {
     /* Item One */
-    left: 0%;
-    right: 80%;
+    left: 5%;
 }
 
 .bar-navigation.item.two {
-    left: 20%;
-    right: 60%;
+    left: 100%;
 }
 
 .bar-navigation.item.three {
-    left: 40%;
-    right: 40%;
+    left: 200%;
 }
 
 .bar-navigation.item.four {
-    left: 60%;
-    right: 20%;
+    left: 300%;
 }
 
 .bar-navigation.item.five {
-    left: 80%;
-    right: 0%;
+    left: 400%;
 }
 
 /* System Bar */
