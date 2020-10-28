@@ -9,6 +9,6 @@
         </div>
         @endforeach
     @else
-        <p>No quiz found</p>
+        <p>No answer found</p>
     @endif
 @endsection
