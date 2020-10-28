@@ -16,6 +16,8 @@ class CreateQuizzesTable extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->string('description');
+            $table->string('type');
             $table->string('youtube')->default("NULL");
             $table->unsignedInteger('user_id');
             $table->timestamps();

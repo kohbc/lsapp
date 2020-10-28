@@ -25,6 +25,7 @@
             {{Form::hidden('question_id', $question->id)}}
             {{Form::hidden('question_answer', $question->answer)}}
             {{Form::hidden('counting', $counting)}}
+            {{Form::hidden('result_id', $result_id)}}
             {{Form::submit('Next', ['class' => 'btn btn-primary'])}}
         {!! Form::close() !!}
     @else
