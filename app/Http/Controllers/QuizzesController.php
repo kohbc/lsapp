@@ -59,21 +59,17 @@ class QuizzesController extends Controller
         }
 
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
+            'type' => 'required'
         ]);
 
         //create a new Quiz
         $quiz = new Quiz;
         $quiz->title = $request->input('title');
         $quiz->description = $request->input('description');
+        $quiz->description = $request->input('description');
         $quiz->type = $request->input('type');
-        //Check for empty input
-        if($request->input('youtube') == null || $request->input('youtube') == ""){
-            $quiz->youtube = "NULL";
-        }
-        else{
-            $quiz->youtube = $request->input('youtube');
-        }
+        $quiz->youtube = $request->input('youtube');
         $quiz->user_id = auth()->user()->id;
         $quiz->save();
 
@@ -130,19 +126,14 @@ class QuizzesController extends Controller
         }
 
         $this->validate($request, [
-            'title' => 'required'
+            'title' => 'required',
+            'type' => 'required'
         ]);
 
         //find existing quiz
         $quiz = Quiz::find($id);
         $quiz->title = $request->input('title');
-        //Check for empty input
-        if($request->input('youtube') == null || $request->input('youtube') == ""){
-            $quiz->youtube = "NULL";
-        }
-        else{
-            $quiz->youtube = $request->input('youtube');
-        }
+        $quiz->youtube = $request->input('youtube');
         $quiz->user_id = auth()->user()->id;
         $quiz->save();
 
@@ -167,6 +158,19 @@ class QuizzesController extends Controller
         //Check for correct user id
         if(auth()->user()->id !== $quiz->user_id){
             return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+        $questions = $quiz->questions;
+        foreach ($questions as $question){
+            $answers = $question->answers;
+            foreach ($answers as $answer){
+                $answer->delete();
+            }
+            $question->delete();
+        }
+
+        $results = $quiz->results;
+        foreach ($results as $result){
+            $result->delete();
         }
 
         $quiz->delete();

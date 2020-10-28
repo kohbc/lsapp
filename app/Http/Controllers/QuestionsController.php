@@ -53,48 +53,18 @@ class QuestionsController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'answer' => 'required',
+            'answer' => 'required'
         ]);
 
         //create a new Question
         $question = new Question;
         $question->title = $request->input('title');
-        //Check for empty input A
-        if($request->input('A') == null || $request->input('A') == ""){
-            $question->A = "NULL";
-        }
-        else{
-            $question->A = $request->input('A');
-        }
-        //Check for empty input B
-        if($request->input('B') == null || $request->input('B') == ""){
-            $question->B = "NULL";
-        }
-        else{
-            $question->B = $request->input('B');
-        }
-        //Check for empty input C
-        if($request->input('C') == null || $request->input('C') == ""){
-            $question->C = "NULL";
-        }
-        else{
-            $question->C = $request->input('C');
-        }
-        //Check for empty input D
-        if($request->input('D') == null || $request->input('D') == ""){
-            $question->D = "NULL";
-        }
-        else{
-            $question->D = $request->input('D');
-        }
+        $question->A = $request->input('A');
+        $question->B = $request->input('B');
+        $question->C = $request->input('C');
+        $question->D = $request->input('D');
         $question->answer = $request->input('answer');     
-        //Check for empty input
-        if($request->input('explanation') == null || $request->input('explanation') == ""){
-            $question->explanation = "NULL";
-        }
-        else{
-            $question->explanation = $request->input('explanation');
-        }
+        $question->explanation = $request->input('explanation');
         $quiz_id = $request->input('quiz_id');
         $question->quiz_id = $request->input('quiz_id');
         $question->user_id = auth()->user()->id;
@@ -155,11 +125,7 @@ class QuestionsController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'A' => 'required',
-            'B' => 'required',
-            'C' => 'required',
-            'D' => 'required',
-            'answer' => 'required',
+            'answer' => 'required'
         ]);
 
         //find existing question
@@ -170,18 +136,14 @@ class QuestionsController extends Controller
         $question->C = $request->input('C');
         $question->D = $request->input('D');
         $question->answer = $request->input('answer');     
-        //Check for empty input
-        if($request->input('explanation') == null || $request->input('explanation') == ""){
-            $question->explanation = "NULL";
-        }
-        else{
-            $question->explanation = $request->input('explanation');
-        }
+        $question->explanation = $request->input('explanation');
         $question->quiz_id = $request->input('quiz_id');
         $question->user_id = auth()->user()->id;
         $question->save();
 
-        return redirect('/dashboard')->with('success', 'Question Updated');
+        $quiz_id = $question->quiz_id;
+        return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Updated');
+        //return redirect('/dashboard')->with('success', 'Question Updated');
     }
 
     /**
@@ -193,6 +155,7 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         $question = Question::find($id);
+        $quiz_id = $question->quiz_id;
 
         //Check for user privilege level
         if(auth()->user()->level < 2){
@@ -204,8 +167,21 @@ class QuestionsController extends Controller
             return redirect('/dashboard')->with('error', 'Unauthorized access');
         }
 
+        $answers = $question->answers;
+        foreach ($answers as $answer){
+            //update results
+            $answer->result->count_que = $answer->result->count_que - 1;
+            if($answer->mark == 1){
+                $answer->result->mark = $answer->result->mark - 1;
+            }
+            $answer->result->save();
+            $answer->delete();
+        }
+
         $question->delete();
-        return redirect('/dashboard')->with('success', 'Question Removed');
+
+        return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Deleted');
+        //return redirect('/dashboard')->with('success', 'Question Removed');
     }
 
     public function create_result($quiz_id)
