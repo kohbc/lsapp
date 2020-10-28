@@ -26,7 +26,7 @@ class QuizzesController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::orderBy('created_at', 'desc')->paginate(5);
+        $quizzes = Quiz::orderBy('type', 'desc')->paginate(5);
         return view('quizzes.index')->with('quizzes', $quizzes);
         //$quiz = Quiz::orderBy('created_at', 'desc')->skip(1)->first();
         //return view('quizzes.index')->with('quiz', $quiz);
@@ -65,6 +65,8 @@ class QuizzesController extends Controller
         //create a new Quiz
         $quiz = new Quiz;
         $quiz->title = $request->input('title');
+        $quiz->description = $request->input('description');
+        $quiz->type = $request->input('type');
         //Check for empty input
         if($request->input('youtube') == null || $request->input('youtube') == ""){
             $quiz->youtube = "NULL";

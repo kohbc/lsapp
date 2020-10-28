@@ -17,10 +17,12 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
             $table->string('answer');
             $table->unsignedInteger('question_id');
+            $table->unsignedInteger('result_id');
             $table->unsignedInteger('user_id');
             $table->boolean('mark');
             $table->timestamps();
             $table->foreign('question_id')->references('id')->on('questions');
+            $table->foreign('result_id')->references('id')->on('results');
         });
     }
 
