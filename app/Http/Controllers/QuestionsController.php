@@ -95,11 +95,12 @@ class QuestionsController extends Controller
         else{
             $question->explanation = $request->input('explanation');
         }
+        $quiz_id = $request->input('quiz_id');
         $question->quiz_id = $request->input('quiz_id');
         $question->user_id = auth()->user()->id;
         $question->save();
 
-        return redirect('/dashboard')->with('success', 'Question Created');
+        return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Created');
     }
 
     /**
