@@ -30,6 +30,6 @@
         {!! Form::close() !!}
     @else
         <p>End of the quiz</p>
-        <a href="/quizzes" class="btn btn-primary">Finish</a>
+        <a href="/results" class="btn btn-primary">Finish</a>
     @endif
 @endsection
