@@ -7,7 +7,6 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-md-4 col-sm-4">
-                        <img src="{{Auth::user()->avatar}}">
                         <h3>Username: {{Auth::user()->name}} E-mail: {{Auth::user()->email}}</h3><br/>
                     
                     </div>
