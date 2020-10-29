@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Answer;
 use App\User;
 use App\Quiz;
+use App\Result;
 
 class AnswersController extends Controller
 {
@@ -26,10 +27,7 @@ class AnswersController extends Controller
      */
     public function index()
     {
-        $user_id = auth()->user()->id;
-        $user = User::find($user_id);
-        //$answers = Answer::orderBy('created_at', 'desc')->paginate(5);
-        return view('answers.index')->with('answers', $user->answers);
+        //nothing for now
     }
 
     /**
@@ -53,24 +51,41 @@ class AnswersController extends Controller
         $this->validate($request, [
             'MCQ' => 'required'
         ]);
+        $result_id = $request->input('result_id');
+        $result = Result::find($result_id);
 
-        //create a new Quiz
+        //create a new Answer
         $answer = new Answer;
         $answer->answer = $request->input('MCQ');
         $answer->question_id = $request->input('question_id');
+        $answer->result_id = $result_id;
         $answer->user_id = auth()->user()->id;
+
+        //check for mark
         if($request->input('MCQ') == $request->input('question_answer')){
+            $result->mark = $result->mark + 1;
             $answer->mark = '1';
         }
         else{
             $answer->mark = '0';
         }
+
         $answer->save();
+
         $quiz_id = $request->input('quiz_id');
         $counting = $request->input('counting');
         $counting = $counting + 1;
+
+        //User get 100points if they ace the result
+        if($result->mark == $result->count_que){
+            $user = User::find(auth()->user()->id);
+            $user->score = $user->score + 100;
+            $user->save();
+        }
+        $result->save();
+
         $quiz = Quiz::find($quiz_id);
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result_id', $result->id);
         //return redirect()->route('question_next', ['quiz_id' => $quiz_id, 'counting' => $counting])->with('success', "Answer saved");
     }
 

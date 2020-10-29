@@ -28,16 +28,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function posts(){
-        return $this->hasMany('App\Post');
-    }
-
     public function quizzes(){
         return $this->hasMany('App\Quiz');
     }
 
     public function questions(){
         return $this->hasMany('App\Question');
+    }
+
+    public function results(){
+        return $this->hasMany('App\Result');
     }
     
     public function answers(){

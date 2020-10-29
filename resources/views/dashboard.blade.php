@@ -8,7 +8,6 @@
                 <div class="panel-body">
                     <div class="col-md-4 col-sm-4">
                         <h3>Username: {{Auth::user()->name}} E-mail: {{Auth::user()->email}}</h3><br/>
-                    
                     </div>
                     @if(Auth::user()->level >= 2)
                         <a href="/quizzes/create" class="btn btn-primary">Create Quiz</a>

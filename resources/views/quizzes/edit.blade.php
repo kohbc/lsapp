@@ -8,6 +8,10 @@
             {{Form::text('title', $quiz->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
         </div>
         <div class="form-group">
+            {{Form::label('description', 'Description')}}
+            {{Form::textarea('description', $quiz->description, ['class' => 'foo', 'placeholder' => 'Description', 'rows' => 10, 'cols' => 44.75])}}
+            {{Form::label('type', 'Quiz Type')}}
+            {{Form::text('type', $quiz->type, ['class' => 'form-control', 'placeholder' => 'Quiz Type'])}}
             {{Form::label('youtube', 'YouTube')}}
             {{Form::text('youtube', $quiz->youtube, ['class' => 'form-control', 'placeholder' => 'YouTube'])}}
         </div>
