@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/quizzes" class="btn btn-default">Go Back</a>
     @if($quiz != null)
-        <h1>{{$quiz->title}}</h1>
         <h3>Description: {{$quiz->description}} Type: {{$quiz->type}}</h3>
         @if($quiz->youtube != null)
             <iframe width="345" height="300" src="{{$quiz->youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
