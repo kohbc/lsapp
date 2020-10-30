@@ -2,17 +2,18 @@
 
 .bar-navigation {
     /* top level container for the navigation bar */
-    position: absolute;
-    width: 360px;
+    position: fixed;
+    width:100%;
     height: 64px;
+    bottom: 0;
 }
 
 .bar-navigation.surface {
     /* Surface for navigation bar */
-    position: absolute;
+    position: fixed;
     height: 56px;
     left: 0px;
-    bottom: 0;
+    /* bottom: 0; */
 
     /* 1 / Primary — 600* */
     background: #4A148C;
@@ -48,6 +49,7 @@
 
 .bar-navigation.enabledlabel {
     /* Label */
+    position: relative;
     top: 42%;
 
     /* Caption / Roboto Regular */
@@ -130,16 +132,16 @@
 /* App Bar */
 
 .bar-app {
-    position: absolute;
-    width: 360px;
+    /* position: static; */
+    width: 100%;
     height: 56px;
 }
 
 .bar-app.surface {
     /* App Bar / Top App Bar / Regular / Flat / Primary Color */
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
 
     /* 1 / Primary — 600* */
     background: #4A148C;
@@ -155,9 +157,11 @@
     left: 72px;
     right: 16px;
     top: calc(50% - 24px/2);
+    margin-bottom: 0;
+    margin-top: 1px;
 
     /* H6 / Roboto Medium */
-    font-family: Roboto;
+    /* font-family: Roboto; */
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -177,7 +181,7 @@
     top: calc(50% - 24px/2);
 
     /* White — High Emphasis */
-    background: #FFFFFF;
+    /* background: #FFFFFF; */
 }
 
 .bar-app.icon.back {
@@ -185,25 +189,28 @@
 }
 
 .bar-app.icon.search {
-    right: 52px;
+    left: 300px;
 }
 
 .bar-app.icon.overflow {
-    right: 16px;
+    left: 345px;
 }
 
 /* Tab Bar */
 
 .bar-tab {
     position: absolute;
-    width: 360px;
+    width: 100%;
     height: 48px;
     overflow-x: scroll;
+    left:0;
+    margin-bottom: 10px;
 }
 
 .bar-tab.surface {
     /* 1 / Primary — 600* */
     background: #4A148C;
+    width: 100%;
 
     /* 4dp — Elevation */
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);

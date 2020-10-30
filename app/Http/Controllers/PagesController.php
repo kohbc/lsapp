@@ -35,7 +35,7 @@ class PagesController extends Controller
     }
 
     public function account(){
-        return view('pages.account');
+        return view('dashboard');
     }
 
     public function social(){
