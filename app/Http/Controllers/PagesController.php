@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class PagesController extends Controller
 {
@@ -23,6 +24,11 @@ class PagesController extends Controller
             'services' => ['Web Design', 'Programming', 'SEO']
         );
         return view('pages.services')->with($data);
+    }
+
+    public function leaderboard(){
+        $users = User::orderBy('score', 'DESC')->orderBy('updated_at', 'ASC')->take(10)->get();
+        return view('leaderboard')->with('users', $users);
     }
 
     //TEA App Bottom Bar

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateResultsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            
+        Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('body');
+            $table->integer('mark')->default(0);
+            $table->integer('count_que')->default(0);
+            $table->unsignedInteger('quiz_id');
+            $table->unsignedInteger('user_id');
+            $table->foreign('quiz_id')->references('id')->on('quizzes');
             $table->timestamps();
+            
         });
     }
 
@@ -29,6 +32,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('results');
     }
 }

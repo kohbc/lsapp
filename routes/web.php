@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-USE App\Quiz;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +16,13 @@ USE App\Quiz;
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
-Route::resource('posts', 'PostsController');
+Route::get('/leaderboard', 'PagesController@leaderboard');
 Route::resource('quizzes', 'QuizzesController');
 Route::resource('questions', 'QuestionsController');
-Route::get('/create_question/{quiz_id}', function($quiz_id){
-    return view('questions.create')->with('quiz_id', $quiz_id);
-});
-Route::get('/question_next/{quiz_id}/{counting}', function($quiz_id, $counting){
-    //$quiz = Quiz::orderBy('created_at', 'desc')->skip(1)->first();
-    //return view('quizzes.index')->with('quiz', $quiz);
-    //$questions = Question::where('quiz_id', $quiz_id);
-    $quiz = Quiz::find($quiz_id);
-    return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
-});
-
+Route::resource('results', 'ResultsController');
+Route::get('/create_result/{quiz_id}', 'QuestionsController@create_result');
+Route::get('/create_question/{quiz_id}', 'QuestionsController@create_question');
+Route::get('/question_next/{quiz_id}/{counting}', 'QuestionsController@question_next');
 Route::resource('answers', 'AnswersController');
 Route::get('/resources', 'PagesController@resources')->name('resources.index');
 Route::get('/activities', 'PagesController@activities')->name('activities.index');

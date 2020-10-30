@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 USE App\Question;
+USE App\Quiz;
+USE App\Result;
 
 class QuestionsController extends Controller
 {
@@ -51,11 +53,7 @@ class QuestionsController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'A' => 'required',
-            'B' => 'required',
-            'C' => 'required',
-            'D' => 'required',
-            'answer' => 'required',
+            'answer' => 'required'
         ]);
 
         //create a new Question
@@ -66,18 +64,13 @@ class QuestionsController extends Controller
         $question->C = $request->input('C');
         $question->D = $request->input('D');
         $question->answer = $request->input('answer');     
-        //Check for empty input
-        if($request->input('explanation') == null || $request->input('explanation') == ""){
-            $question->explanation = "NULL";
-        }
-        else{
-            $question->explanation = $request->input('explanation');
-        }
+        $question->explanation = $request->input('explanation');
+        $quiz_id = $request->input('quiz_id');
         $question->quiz_id = $request->input('quiz_id');
         $question->user_id = auth()->user()->id;
         $question->save();
 
-        return redirect('/dashboard')->with('success', 'Question Created');
+        return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Created');
     }
 
     /**
@@ -132,11 +125,7 @@ class QuestionsController extends Controller
 
         $this->validate($request, [
             'title' => 'required',
-            'A' => 'required',
-            'B' => 'required',
-            'C' => 'required',
-            'D' => 'required',
-            'answer' => 'required',
+            'answer' => 'required'
         ]);
 
         //find existing question
@@ -147,18 +136,14 @@ class QuestionsController extends Controller
         $question->C = $request->input('C');
         $question->D = $request->input('D');
         $question->answer = $request->input('answer');     
-        //Check for empty input
-        if($request->input('explanation') == null || $request->input('explanation') == ""){
-            $question->explanation = "NULL";
-        }
-        else{
-            $question->explanation = $request->input('explanation');
-        }
+        $question->explanation = $request->input('explanation');
         $question->quiz_id = $request->input('quiz_id');
         $question->user_id = auth()->user()->id;
         $question->save();
 
-        return redirect('/dashboard')->with('success', 'Question Updated');
+        $quiz_id = $question->quiz_id;
+        return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Updated');
+        //return redirect('/dashboard')->with('success', 'Question Updated');
     }
 
     /**
@@ -170,6 +155,7 @@ class QuestionsController extends Controller
     public function destroy($id)
     {
         $question = Question::find($id);
+        $quiz_id = $question->quiz_id;
 
         //Check for user privilege level
         if(auth()->user()->level < 2){
@@ -181,7 +167,48 @@ class QuestionsController extends Controller
             return redirect('/dashboard')->with('error', 'Unauthorized access');
         }
 
+        $answers = $question->answers;
+        foreach ($answers as $answer){
+            //update results
+            $answer->result->count_que = $answer->result->count_que - 1;
+            if($answer->mark == 1){
+                $answer->result->mark = $answer->result->mark - 1;
+            }
+            $answer->result->save();
+            $answer->delete();
+        }
+
         $question->delete();
-        return redirect('/dashboard')->with('success', 'Question Removed');
+
+        return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Deleted');
+        //return redirect('/dashboard')->with('success', 'Question Removed');
     }
+
+    public function create_result($quiz_id)
+    {
+
+        $quiz = Quiz::find($quiz_id);
+
+        //create a new Question
+        $result = new Result;
+        $result->count_que = count($quiz->questions);
+        $result->quiz_id = $quiz->id;
+        $result->user_id = auth()->user()->id;
+        $result->save();
+        $counting = 0;
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result_id', $result->id);
+    }
+
+    public function question_next($quiz_id, $counting)
+    {
+        $quiz = Quiz::find($quiz_id);
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
+    }
+
+    public function create_question($quiz_id)
+    {
+        return view('questions.create')->with('quiz_id', $quiz_id);
+    }
+
+
 }
