@@ -34,6 +34,11 @@
                             <li><a href="/">TEA Preferences</a></li>
                             <li><a href="/">Contact Staff</a></li>
                             <li><a href="/">About TEA</a></li>
+                            <li><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                          document.getElementById('logout-form').submit();">
+                                Logout
+                            </a></li>
                         </ul>
                 </div>
             </div>

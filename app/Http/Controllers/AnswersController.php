@@ -85,8 +85,8 @@ class AnswersController extends Controller
         $result->save();
 
         $quiz = Quiz::find($quiz_id);
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result_id', $result->id);
-        //return redirect()->route('question_next', ['quiz_id' => $quiz_id, 'counting' => $counting])->with('success', "Answer saved");
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result', $result);
+        
     }
 
     /**
