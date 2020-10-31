@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Quiz;
 use App\Result;
-use App\Answer;
 
 class QuizzesController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
+     * Allow guest account to access index or show only
      * @return void
      */
     public function __construct()
@@ -29,8 +28,6 @@ class QuizzesController extends Controller
     {
         $quizzes = Quiz::orderBy('type', 'desc')->paginate(5);
         return view('quizzes.index')->with('quizzes', $quizzes);
-        //$quiz = Quiz::orderBy('created_at', 'desc')->skip(1)->first();
-        //return view('quizzes.index')->with('quiz', $quiz);
     }
 
     /**
@@ -40,7 +37,7 @@ class QuizzesController extends Controller
      */
     public function create()
     {
-        //Check for user privilege level
+        //Check for user privilege level before proceed
         if(auth()->user()->level < 2){
             return redirect('/quizzes')->with('error', 'Unauthorized access');
         }
@@ -55,6 +52,7 @@ class QuizzesController extends Controller
      */
     public function store(Request $request)
     {
+        //Check for user privilege level before proceed
         if(auth()->user()->level < 2){
             return redirect('/quizzes')->with('error', 'Unauthorized access');
         }
@@ -87,6 +85,8 @@ class QuizzesController extends Controller
     {
         $user_id = auth()->user()->id;
         $quiz = Quiz::find($id);
+
+        //Check for any ongoing quiz
         $result = Result::where('user_id', $user_id)->where('quiz_id', $quiz->id)->where('active', 1)->first();
         if($result == null){
             $active = 0;
@@ -94,6 +94,7 @@ class QuizzesController extends Controller
         else{
             $active = 1;
         }
+
         return view('quizzes.show')->with('quiz', $quiz)->with('active', $active);
     }
 
@@ -141,6 +142,12 @@ class QuizzesController extends Controller
 
         //find existing quiz
         $quiz = Quiz::find($id);
+
+        //Check for correct user id
+        if(auth()->user()->id !== $quiz->user_id){
+            return redirect('/quizzes')->with('error', 'Unauthorized access');
+        }
+
         $quiz->title = $request->input('title');
         $quiz->youtube = $request->input('youtube');
         $quiz->user_id = auth()->user()->id;
@@ -168,6 +175,8 @@ class QuizzesController extends Controller
         if(auth()->user()->id !== $quiz->user_id){
             return redirect('/quizzes')->with('error', 'Unauthorized access');
         }
+
+        //Start deleting starting from Answers > Questions > Results > Quiz
         $questions = $quiz->questions;
         foreach ($questions as $question){
             $answers = $question->answers;

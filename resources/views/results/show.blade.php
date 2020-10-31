@@ -22,12 +22,14 @@
                     <input type="radio" {{($answer->answer=="D")?"checked":""}} disabled>
                     {{Form::label($answer->question->D)}}
                 </div>
-                @if($answer->mark == 1)
-                    <small>Correct</small>
-                @else
-                    <small>Wrong</small>
+                @if($active != 1)
+                    @if($answer->mark == 1)
+                        <small>Correct</small>
+                    @else
+                        <small>Wrong</small>
+                    @endif
+                    <br/>
                 @endif
-                <br/>
                 <small>Submitted on {{$answer->created_at}}</small><br/>
             </div>
         @endforeach
