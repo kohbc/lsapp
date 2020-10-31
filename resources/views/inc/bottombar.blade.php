@@ -9,9 +9,9 @@
                     @endif
                 </div>
                 <div class="bar-navigation item two">
-                    <a class="{{(Route::currentRouteName() === 'account.index') ? 'bar-navigation enabledicon' : ''}}" href="/account"><img src="/storage/cover_image/baseline_account_circle_white_18dp.png" class="bar-navigation disabledicon" alt="account"></a>
-                    @if (Route::currentRouteName() === 'account.index')
-                            <span class="bar-navigation enabledlabel">Account</span>
+                    <a class="{{(Route::currentRouteName() === 'dashboard.index') ? 'bar-navigation enabledicon' : ''}}" href="/dashboard"><img src="/storage/cover_image/baseline_account_circle_white_18dp.png" class="bar-navigation disabledicon" alt="account"></a>
+                    @if (Route::currentRouteName() === 'dashboard.index')
+                        <span class="bar-navigation enabledlabel">Account</span>
                     @endif 
                 </div>
                 <div class="bar-navigation item three">
