@@ -150,12 +150,22 @@
         @if (Route::currentRouteName() === 'resources.index')
             @include('inc.tabbar')
             <br><br>
+        @elseif (Route::currentRouteName() === 'dashboard.index')
+            @include('inc.tabbar')
+            <br><br>
+        @elseif (Route::currentRouteName() === 'activities.index')
+            @include('inc.tabbar')
+            <br><br>
+        @elseif (Route::currentRouteName() === 'ranking.index')
+            @include('inc.tabbar')
+            <br><br>
         @endif    
         <br>
         <div class="container">
             @include('inc.messages')
             @yield('content')
         </div>
+        <br><br>
         @include('inc.bottombar')
     </div>
 
