@@ -1,4 +1,4 @@
-<nav class="bar-navigation surface">
+<nav class="bar-navigation">
     <div class="container">
         <div class="bar-navigation surface">
             <div class="bar-navigation item">

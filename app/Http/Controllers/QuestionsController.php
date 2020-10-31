@@ -202,7 +202,7 @@ class QuestionsController extends Controller
     public function question_next($quiz_id, $counting)
     {
         $quiz = Quiz::find($quiz_id);
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('quiz', $quiz);
     }
 
     public function create_question($quiz_id)
