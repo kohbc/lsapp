@@ -184,31 +184,8 @@ class QuestionsController extends Controller
         //return redirect('/dashboard')->with('success', 'Question Removed');
     }
 
-    public function create_result($quiz_id)
-    {
-
-        $quiz = Quiz::find($quiz_id);
-
-        //create a new Question
-        $result = new Result;
-        $result->count_que = count($quiz->questions);
-        $result->quiz_id = $quiz->id;
-        $result->user_id = auth()->user()->id;
-        $result->save();
-        $counting = 0;
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result_id', $result->id);
-    }
-
-    public function question_next($quiz_id, $counting)
-    {
-        $quiz = Quiz::find($quiz_id);
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
-    }
-
     public function create_question($quiz_id)
     {
         return view('questions.create')->with('quiz_id', $quiz_id);
     }
-
-
 }
