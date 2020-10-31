@@ -9,7 +9,13 @@
             <p>No youtube link provided.</p>
         @endif
         @if(!Auth::guest())
-            <a href="/create_result/{{$quiz->id}}" class="btn btn-primary">Start Quiz</a>
+            <a href="/create_result/{{$quiz->id}}" class="btn btn-primary">
+                @if($active == 0)
+                    Start New Quiz
+                @else
+                    Continue Last Quiz
+                @endif
+            </a>
         @else
             <p>Login to answer this quiz.</p>
         @endif

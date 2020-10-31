@@ -62,13 +62,14 @@ class ResultsController extends Controller
     public function show($id)
     {
         $result = Result::find($id);
+        $quiz_id = $result->quiz->id;
 
         //Check for correct user id
         if(auth()->user()->id !== $result->user_id){
             return redirect('/answers')->with('error', 'Unauthorized access');
         }
 
-        return view('results.show')->with('answers', $result->answers);
+        return view('results.show')->with('answers', $result->answers)->with('quiz_id', $quiz_id)->with('active', $result->active);
     }
 
     /**
@@ -121,7 +122,46 @@ class ResultsController extends Controller
             $result->active = 1;
             $result->save();
         }
+        $counting = 0;
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result', $result);
+    }
 
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', 0)->with('result', $result)->with('success', 'Continue last session');
+    public function finish($result_id)
+    {
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+
+        $result = Result::find($result_id);
+
+        $quiz_id = $result->quiz_id;
+        $mark = 0;
+        $count_que = 0;
+
+        $has_ace = Result::where('user_id', $user_id)->where('quiz_id', $quiz_id)->where('ace', 1)->first();
+
+        $result = Result::find($result_id);
+        $answers = $result->answers;
+        foreach($answers as $answer){
+            $mark = $mark + $answer->mark;
+            $count_que = $count_que + 1;
+        }
+        $result->mark = $mark;
+        $result->count_que = $count_que;
+
+        $message = 'Quiz finish';
+        if($mark == $count_que){
+            $message = 'Quiz finish. No more points gained due to previous ace result';
+            //if there is no existing ace result, user gain points
+            if($has_ace == null){
+                $user->score = $user->score + 100;
+                $user->save();
+                $message = 'Quiz finish. Gain points for first ace result';
+            }
+            $result->ace = 1;
+        }
+        $result->active = 0;
+        $result->save();
+
+        return redirect('/results')->with('success', $message);
     }
 }

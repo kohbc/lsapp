@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Quiz;
+use App\Result;
 use App\Answer;
 
 class QuizzesController extends Controller
@@ -84,8 +85,16 @@ class QuizzesController extends Controller
      */
     public function show($id)
     {
+        $user_id = auth()->user()->id;
         $quiz = Quiz::find($id);
-        return view('quizzes.show')->with('quiz', $quiz);
+        $result = Result::where('user_id', $user_id)->where('quiz_id', $quiz->id)->where('active', 1)->first();
+        if($result == null){
+            $active = 0;
+        }
+        else{
+            $active = 1;
+        }
+        return view('quizzes.show')->with('quiz', $quiz)->with('active', $active);
     }
 
     /**

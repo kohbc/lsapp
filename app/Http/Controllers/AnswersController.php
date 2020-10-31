@@ -54,39 +54,36 @@ class AnswersController extends Controller
         $result_id = $request->input('result_id');
         $result = Result::find($result_id);
 
-        //create a new Answer
-        $answer = new Answer;
+        $counting = $request->input('counting');
+        $answer_id = $request->input('answer_id');
+
+        //create a new Answer if not exist
+        if($answer_id == null){
+            $answer = new Answer;
+            $answer->question_id = $request->input('question_id');
+            $answer->result_id = $result_id;
+            $answer->user_id = auth()->user()->id;
+        }
+        else{
+            $answer = Answer::find($answer_id);
+        }
+        
         $answer->answer = $request->input('MCQ');
-        $answer->question_id = $request->input('question_id');
-        $answer->result_id = $result_id;
-        $answer->user_id = auth()->user()->id;
 
         //check for mark
         if($request->input('MCQ') == $request->input('question_answer')){
-            $result->mark = $result->mark + 1;
             $answer->mark = '1';
         }
         else{
             $answer->mark = '0';
         }
-
         $answer->save();
 
         $quiz_id = $request->input('quiz_id');
-        $counting = $request->input('counting');
         $counting = $counting + 1;
-
-        //User get 100points if they ace the result
-        if($result->mark == $result->count_que){
-            $user = User::find(auth()->user()->id);
-            $user->score = $user->score + 100;
-            $user->save();
-        }
-        $result->save();
 
         $quiz = Quiz::find($quiz_id);
         return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result', $result);
-        
     }
 
     /**

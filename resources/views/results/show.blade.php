@@ -34,5 +34,8 @@
     @else
         <p>No answers found</p>
     @endif
-
+    @if($active == 1)
+    <p>This Quiz is ongoing</p>
+    <a href="/quizzes/{{$quiz_id}}" class="btn btn-primary">Continue this Quiz</a>
+    @endif
 @endsection
