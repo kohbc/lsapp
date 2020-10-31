@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//localhost/project_tea/public
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
@@ -29,23 +28,7 @@ Route::get('/activities', 'PagesController@activities')->name('activities.index'
 Route::get('/account', 'PagesController@account')->name('account.index');
 Route::get('/social', 'PagesController@social')->name('social.index');
 Route::get('/ranking', 'PagesController@ranking')->name('ranking.index');
-
-/*
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/hello', function () {
-    return 'Hello World';
-});
-
-Route::get('/users/{id}/{name}', function($id, $name){
-    return 'This is user '.$name.' with an id of '.$id;
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
-*/
-Auth::routes();
+Auth::routes(['reset' => false]);
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
 Route::get('/login/google', 'Auth\LoginController@redirectToProvider');
