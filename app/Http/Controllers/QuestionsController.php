@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 USE App\Question;
-USE App\Quiz;
-USE App\Result;
 
 class QuestionsController extends Controller
 {
@@ -26,7 +24,8 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        //implemented in "quizzes/edit", ignore this for now
+        //No index function for Questions
+        return redirect('/quizzes')->with('error', 'Page no found');
     }
 
     /**
@@ -36,7 +35,9 @@ class QuestionsController extends Controller
      */
     public function create()
     {
-        //implemented another way, ignore this for now
+        //No create function for Questions
+        //Replaced by QuestionsController@create_question function
+        return redirect('/quizzes')->with('error', 'Page no found');
     }
 
     /**
@@ -47,6 +48,7 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
+        //Check for user privilege level
         if(auth()->user()->level < 2){
             return redirect('/dashboard')->with('error', 'Unauthorized access');
         }
@@ -81,9 +83,9 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        //need proccess
-        //$question = Question::find($id);
-        //return view('questions.show')->with('question', $question);
+        //No show function for Questions
+        //Replaced by the page Quizzes/{{quiz_id}}/edit
+        return redirect('/quizzes')->with('error', 'Page no found');
     }
 
     /**
@@ -130,6 +132,12 @@ class QuestionsController extends Controller
 
         //find existing question
         $question = Question::find($id);
+
+        //Check for correct user id
+        if(auth()->user()->id !== $question->user_id){
+            return redirect('/dashboard')->with('error', 'Unauthorized access');
+        }
+
         $question->title = $request->input('title');
         $question->A = $request->input('A');
         $question->B = $request->input('B');
@@ -143,7 +151,6 @@ class QuestionsController extends Controller
 
         $quiz_id = $question->quiz_id;
         return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Updated');
-        //return redirect('/dashboard')->with('success', 'Question Updated');
     }
 
     /**
@@ -167,9 +174,10 @@ class QuestionsController extends Controller
             return redirect('/dashboard')->with('error', 'Unauthorized access');
         }
 
+        //Delete starting from Answers > Questions
         $answers = $question->answers;
         foreach ($answers as $answer){
-            //update results
+            //update Results
             $answer->result->count_que = $answer->result->count_que - 1;
             if($answer->mark == 1){
                 $answer->result->mark = $answer->result->mark - 1;
@@ -181,34 +189,11 @@ class QuestionsController extends Controller
         $question->delete();
 
         return redirect()->action('QuizzesController@edit', ['quiz' => $quiz_id])->with('success', 'Question Deleted');
-        //return redirect('/dashboard')->with('success', 'Question Removed');
     }
 
-    public function create_result($quiz_id)
-    {
-
-        $quiz = Quiz::find($quiz_id);
-
-        //create a new Question
-        $result = new Result;
-        $result->count_que = count($quiz->questions);
-        $result->quiz_id = $quiz->id;
-        $result->user_id = auth()->user()->id;
-        $result->save();
-        $counting = 0;
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result_id', $result->id);
-    }
-
-    public function question_next($quiz_id, $counting)
-    {
-        $quiz = Quiz::find($quiz_id);
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting);
-    }
-
+    //Redirect to Create Question page
     public function create_question($quiz_id)
     {
         return view('questions.create')->with('quiz_id', $quiz_id);
     }
-
-
 }

@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/quizzes" class="btn btn-default">Go Back</a>
     @if($quiz != null)
-        <h1>{{$quiz->title}}</h1>
         <h3>Description: {{$quiz->description}} Type: {{$quiz->type}}</h3>
         @if($quiz->youtube != null)
             <iframe width="345" height="300" src="{{$quiz->youtube}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -11,7 +9,13 @@
             <p>No youtube link provided.</p>
         @endif
         @if(!Auth::guest())
-            <a href="/create_result/{{$quiz->id}}" class="btn btn-primary">Start Quiz</a>
+            <a href="/create_result/{{$quiz->id}}" class="btn btn-primary">
+                @if($active == 0)
+                    Start New Quiz
+                @else
+                    Continue Last Quiz
+                @endif
+            </a>
         @else
             <p>Login to answer this quiz.</p>
         @endif

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Answer;
-use App\User;
 use App\Quiz;
 use App\Result;
 
@@ -27,7 +26,8 @@ class AnswersController extends Controller
      */
     public function index()
     {
-        //nothing for now
+        //No Index function for Answers
+        return redirect('/results')->with('error', 'Page no found');
     }
 
     /**
@@ -37,7 +37,9 @@ class AnswersController extends Controller
      */
     public function create()
     {
-        //Not relevant in this controller
+        //No Create function for Answers
+        //Will skip right to AnswersController@Store function
+        return redirect('/results')->with('error', 'Page no found');
     }
 
     /**
@@ -51,42 +53,45 @@ class AnswersController extends Controller
         $this->validate($request, [
             'MCQ' => 'required'
         ]);
+
         $result_id = $request->input('result_id');
         $result = Result::find($result_id);
 
-        //create a new Answer
-        $answer = new Answer;
-        $answer->answer = $request->input('MCQ');
-        $answer->question_id = $request->input('question_id');
-        $answer->result_id = $result_id;
-        $answer->user_id = auth()->user()->id;
+        //Check for correct user id
+        if(auth()->user()->id !== $result->user_id){
+            return redirect('/results')->with('error', 'Unauthorized access');
+        }
 
-        //check for mark
+        $counting = $request->input('counting');
+        $answer_id = $request->input('answer_id');
+
+        //create a new Answer only if there is no existing answer
+        if($answer_id == null){
+            $answer = new Answer;
+            $answer->question_id = $request->input('question_id');
+            $answer->result_id = $result_id;
+            $answer->user_id = auth()->user()->id;
+        }
+        else{
+            $answer = Answer::find($answer_id);
+        }
+        
+        $answer->answer = $request->input('MCQ');
+
+        //Check and update mark
         if($request->input('MCQ') == $request->input('question_answer')){
-            $result->mark = $result->mark + 1;
             $answer->mark = '1';
         }
         else{
             $answer->mark = '0';
         }
-
         $answer->save();
 
         $quiz_id = $request->input('quiz_id');
-        $counting = $request->input('counting');
         $counting = $counting + 1;
 
-        //User get 100points if they ace the result
-        if($result->mark == $result->count_que){
-            $user = User::find(auth()->user()->id);
-            $user->score = $user->score + 100;
-            $user->save();
-        }
-        $result->save();
-
         $quiz = Quiz::find($quiz_id);
-        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result_id', $result->id);
-        //return redirect()->route('question_next', ['quiz_id' => $quiz_id, 'counting' => $counting])->with('success', "Answer saved");
+        return view('questions.show')->with('questions', $quiz->questions)->with('counting', $counting)->with('result', $result);
     }
 
     /**
@@ -101,7 +106,7 @@ class AnswersController extends Controller
 
         //Check for correct user id
         if(auth()->user()->id !== $answer->user_id){
-            return redirect('/answers')->with('error', 'Unauthorized access');
+            return redirect('/results')->with('error', 'Unauthorized access');
         }
 
         return view('answers.show')->with('answer', $answer);
@@ -115,7 +120,9 @@ class AnswersController extends Controller
      */
     public function edit($id)
     {
-        //not being implemented at the moment
+        //No Edit function for Answers
+        //Replaced by AnswersController@Store function
+        return redirect('/results')->with('error', 'Page no found');
     }
 
     /**
@@ -127,7 +134,9 @@ class AnswersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //not being implemented at the moment
+        //No Update function for Answers
+        //Replaced by AnswersController@Store function
+        return redirect('/results')->with('error', 'Page no found');
     }
 
     /**
@@ -138,6 +147,7 @@ class AnswersController extends Controller
      */
     public function destroy($id)
     {
-        //not being implemented at the moment
+        //No Delete function for Answers
+        return redirect('/results')->with('error', 'Page no found');
     }
 }
