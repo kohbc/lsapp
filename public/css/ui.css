@@ -1,0 +1,323 @@
+/* Bottom Navigation Bar */
+
+.bar-navigation {
+    /* top level container for the navigation bar */
+    position: fixed;
+    width: 100%;
+    height: 64px;
+    bottom: 0;
+}
+
+.bar-navigation.surface {
+    /* Surface for navigation bar */
+    position: fixed;
+    height: 56px;
+    left: 0px;
+    /* bottom: 0; */
+
+    /* 1 / Primary — 600* */
+    background: #4A148C;
+
+    /* 8dp — Elevation */
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.bar-navigation.enabledicon {
+    /* icon */
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: calc(50% - 24px/2);
+    top: calc(50% - 24px/2 - 8px);
+    /* margin-left: 5px; */
+
+    /* All / White — High Emphasis */
+    /* background: #FFFFFF; */
+}
+
+.bar-navigation.enabledicon2 {
+    /* icon */
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 30%;
+    top: calc(50% - 24px/2 - 8px);
+
+    /* All / White — High Emphasis */
+    /* background: #FFFFFF; */
+}
+
+.bar-navigation.enabledlabel {
+    /* Label */
+    position: relative;
+    top: 42%;
+    position: relative;
+
+    /* Caption / Roboto Regular */
+    font-style: normal;
+    font-weight: normal;
+    line-height: 45px;
+
+    /* identical to box height, or 133% */
+    letter-spacing: 0.4px;
+    margin-left: 11.25px;
+
+    /* All / White — High Emphasis */
+    color: #FFFFFF;
+}
+
+.bar-navigation.disabledicon {
+    /* Icon / Circle / Fill */
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: calc(50% - 24px/2);
+    top: calc(50% - 24px/2);
+
+    /* All / White — Disabled */
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.bar-navigation.item {
+    position: absolute;
+    width: 75px;
+}
+
+.bar-navigation.item.one {
+    /* Item One */
+    left: 2%;
+}
+
+.bar-navigation.item.two {
+    left: 97%;
+}
+
+.bar-navigation.item.three {
+    left: 197%;
+}
+
+.bar-navigation.item.four {
+    left: 297%;
+}
+
+.bar-navigation.item.five {
+    left: 397%;
+}
+
+/* System Bar */
+
+.bar-system {
+    position: absolute;
+    width: 360px;
+    height: 24px;
+    overflow-y: scroll;
+}
+
+.bar-system.surface {
+    /* System Bar / Primary */
+    position: absolute;
+    top: 0px;
+
+    /* 1 / Primary — 800+ */
+    background: #12005E;
+}
+
+.bar-system.elements {
+    /* Icons */
+    top: calc(50% - 10px/2);
+
+    /* 1 / Primary — 400- */
+    background: #7C43BD;
+}
+
+/* App Bar */
+
+.bar-app {
+    /* position: static; */
+    width: 100%;
+    height: 56px;
+}
+
+.bar-app.surface {
+    /* App Bar / Top App Bar / Regular / Flat / Primary Color */
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    /* 1 / Primary — 600* */
+    background: #4A148C;
+
+    /* 4dp — Elevation */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bar-app.title {
+    /* Title */
+    position: absolute;
+    height: 24px;
+    left: 72px;
+    right: 16px;
+    top: calc(50% - 24px/2);
+    margin-bottom: 0;
+    margin-top: 1px;
+
+    /* H6 / Roboto Medium */
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+
+    /* identical to box height */
+    letter-spacing: 0.15px;
+
+    /* All / White — High Emphasis */
+    color: #FFFFFF;
+}
+
+.bar-app.icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: calc(50% - 24px/2);
+
+    /* White — High Emphasis */
+    /* background: #FFFFFF; */
+}
+
+.bar-app.icon.back {
+    left: 16px;
+}
+
+.bar-app.icon.search {
+    left: 300px;
+}
+
+.bar-app.icon.overflow {
+    left: 345px;
+}
+
+/* Tab Bar */
+
+.bar-tab {
+    position: fixed;
+    width: 100%;
+    height: 48px;
+    overflow-x: scroll;
+    left:0;
+    margin-bottom: 10px;
+}
+
+.bar-tab.surface {
+    /* 1 / Primary — 600* */
+    background: #4A148C;
+    width: 100%;
+
+    /* 4dp — Elevation */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bar-tab.enabled.label {
+    /* Button */
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 32.5%;
+    bottom: 34.17%;
+    
+    /* Button / Roboto Medium */
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    /* identical to box height, or 114% */
+    text-align: center;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+    
+    /* All / White — High Emphasis */
+    color: #FFFFFF;
+}
+
+.bar-tab.enabled.indicator {
+    /* Indicator */
+    height: 1.33px;
+    width: 120px;
+    left: 0px;
+    top: 46.66px;
+
+    /* All / White — High Emphasis */
+    background: #FFFFFF;
+}
+
+.bar-tab.disabled.label {
+    /* Button */
+    position: absolute;
+    /* left: 0px;
+    right: 0px; */
+    top: 33.33%;
+    bottom: 33.33%;
+
+    /* Button / Roboto Medium */
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+
+    /* identical to box height, or 114% */
+    text-align: center;
+    letter-spacing: 0.75px;
+    text-transform: uppercase;
+
+    /* All / White — Disabled */
+    color: rgba(255, 255, 255, 0.5);
+    mix-blend-mode: normal;
+}
+
+.bar-tab.item1 {
+    position: absolute;
+    width: 125px;
+    height: 48px;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+}
+
+.bar-tab.item2 {
+    position: absolute;
+    width: 125px;
+    height: 48px;
+    top: 0px;
+    bottom: 0px;
+    left: 33.33%;
+}
+
+.bar-tab.item3 {
+    position: absolute;
+    width: 125px;
+    height: 48px;
+    top: 0px;
+    bottom: 0px;
+    left: 66.67%;
+}
+
+.bar-tab.item4 {
+    position: absolute;
+    width: 187.5px;
+    height: 48px;
+    top: 0px;
+    bottom: 0px;
+    left: 0;
+}
+
+.bar-tab.item5 {
+    position: absolute;
+    width: 187.5px;
+    height: 48px;
+    top: 0px;
+    bottom: 0px;
+    left: 50%;
+}

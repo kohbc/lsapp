@@ -12,4 +12,16 @@ class Answer extends Model
     public $primaryKey = 'id';
     //Timestamps
     public $timestamps = true;
+
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
+
+    public function question(){
+        return $this->belongsTo('App\Question');
+    }
+
+    public function result(){
+        return $this->belongsTo('App\Result');
+    }
 }

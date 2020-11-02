@@ -16,13 +16,10 @@ class CreateQuizzesTable extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('Q_1');
-            $table->string('Q_1A');
-            $table->string('Q_1B');
-            $table->string('Q_1C');
-            $table->string('Q_1D');
-            $table->string('Q_1Answer');
-            $table->integer('user_id');
+            $table->string('description')->nullable();
+            $table->string('type');
+            $table->string('youtube')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

@@ -16,4 +16,12 @@ class Quiz extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+    
+    public function questions(){
+        return $this->hasMany('App\Question');
+    }
+
+    public function results(){
+        return $this->hasMany('App\Result');
+    }
 }

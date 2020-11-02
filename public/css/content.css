@@ -1,0 +1,324 @@
+.list {
+    /* list container for lists of content */
+    position: absolute;
+    width: 360px;
+}
+
+.list.item{
+    /* items which make up the list */
+    position: absolute;
+    height: 72px;
+}
+
+.list.item.divider {
+    /* divider for between list items */
+    position: absolute;
+    height: 1px;
+    left: 72px;
+    right: 0px;
+    top: calc(50% - 1px/2 + 35.5px);
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.list.item.icon {
+    /* icon for list items - not used for button list */
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 16px;
+    top: calc(50% - 24px/2);
+
+    /* Black — Inactive */
+    background: rgba(0, 0, 0, 0.54);
+}
+
+.list.item.label {
+    /* label text for list items */
+    position: absolute;
+    height: 24px;
+    left: 72px;
+    right: 56px;
+    top: calc(50% - 24px/2 - 7.6px);
+
+    /* Subtitle 1 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+
+    /* identical to box height, or 150% */
+    letter-spacing: 0.15px;
+
+    /* All / Black — High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.list.item.image-list.image {
+    /*image for image-list items */
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 16px;
+    top: calc(50% - 40px/2);
+}
+
+.list.item.image-list.context {
+    /* context text for image list items */
+    /* Body 2 */
+    position: absolute;
+    height: 20px;
+    left: 72px;
+    right: 56px;
+    top: calc(50% - 20px/2 + 13.6px);
+
+    /* Body 2 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+
+    /* identical to box height, or 143% */
+    letter-spacing: 0.25px;
+
+    /* All / Black — Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+    mix-blend-mode: normal;
+}
+
+.list.item.achievement-list.icon {
+    /* icon on the left of the item */
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 16px;
+    top: calc(50% - 40px/2);
+    
+    /* 1 / Primary — 400- */
+    background: #7C43BD;
+}
+
+.list.item.achievement-list.indicator-bar {
+    /* progress indicator bar background */
+    position: absolute;
+    width: 232px;
+    height: 4px;
+    left: 72px;
+    top: 47px;
+
+    /* 1 / Secondary — 300* */
+    background: #4FC2F7;
+    opacity: 0.24;
+    border-radius: 2px;
+}
+
+.list.item.achievement-list.indicator-progress {
+    /* progress indicator bar */
+    position: absolute;
+    /* THIS CHANGES BASED ON PROGRESS SOMEHOW */
+    width: 150px;
+    height: 4px;
+    left: 72px;
+    top: 47px;
+
+    /* 1 / Secondary — 300* */
+    background: #4FC2F7;
+    border-radius: 2px;
+}
+
+.list.item.progress-list.indicator-progress {
+    /* progress indicator bar for left of item */
+    /* no clue how to actually do this, this is just the css */
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 16px;
+    top: calc(50% - 40px/2);
+
+    /* 1 / Primary — 400- */
+    background: #7C43BD;
+}
+
+.list.item.progress-list.context {
+    /* context text for progress list items */
+    /* Body 2 */
+    position: absolute;
+    height: 20px;
+    left: 72px;
+    right: 56px;
+    top: calc(50% - 20px/2 + 13.6px);
+
+    /* Body 2 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+
+    letter-spacing: 0.25px;
+
+    /* All / Black — Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+    mix-blend-mode: normal;
+}
+
+.list.item.button-list.label {
+    /* needs own label since it needs to be centered vertically */
+    top: 50%;
+    /* everything else should be inherited from .list.item.label */
+}
+
+.list.item.button-list.button {
+    /* button for right of item */
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 16px;
+    top: 50%;
+    /* everything else should be controlled by the button in component.css */
+}
+
+.answer {
+    /* answer container */
+    width: 360px;
+}
+
+.answer.multiple-choice {
+    /* multiple choice answer item */
+    /* should have a list of 4 items in it */
+    height: 144px;
+}
+
+.answer.multiple-choice.item {
+    /* multiple choice answer item */
+    height: 36px;
+}
+
+.answer.multiple-choice.item.divider {
+    /* divider to separate multiple choice answer items */
+    position: absolute;
+    height: 0.75px;
+    width: 280px;
+    left: 40px;
+    top: 1px;
+    border-radius: 0px;
+
+    /* Light Background */
+    background: #FAFAFA;
+}
+
+.answer.multiple-choice.item.label {
+    /* label for multiple choice answer items */
+    /* Body 2 */
+    position: absolute;
+    height: 20px;
+    width: 250px;
+    left: 44px;
+    top: 50%;
+
+    /* Body 2 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    letter-spacing: 0.25px;
+
+    /* All / Black — High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.answer.multiple-choice.item.button {
+    /* radio button for multiple choice answers */
+    position: absolute;
+    height: 24px;
+    width: 24px;
+    left: 320px;
+    top: 6px;
+    /* everything else should be controlled by the button in component.css */
+}
+
+.question {
+    /* generic question container */
+    /* height should be dynamic as per grid and text length/wrapping */
+    position: absolute;
+    width: 360px;
+    left: 403px;
+    top: 183px;
+}
+
+.question.label {
+    /* title for question/question number */
+    /* Subtitle 1 */    
+    position: absolute;
+    height: 24px;
+    width: 288px;
+    left: 16px;
+    right: 56px;
+    top: 12px;
+
+    /* Subtitle 1 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    letter-spacing: 0.15px;
+
+    /* Black — High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.question.caption {
+    /* text showing progress through quiz */
+    /* Caption */
+    position: absolute;
+    width: 64px;
+    height: 16px;
+    right: 16px;
+    top: 16.8px;
+
+    /* Caption / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    /* identical to box height, or 133% */
+    text-align: right;
+    letter-spacing: 0.4px;
+
+    /* Black — High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.question.context {
+    /* text containing the actual question */
+    /* Body 2 */
+    position: absolute;
+    height: 40px;
+    left: 16px;
+    right: 16px;
+    top: 37px;
+
+    /* Body 2 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+    letter-spacing: 0.25px;
+
+    /* Black — Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+    mix-blend-mode: normal;
+}
