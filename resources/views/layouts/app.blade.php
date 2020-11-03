@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/ui.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/components.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/content.css') }}" rel="stylesheet">
 
     <style>
         .navbar-inverse {
@@ -148,12 +150,6 @@
         @include('inc.navbar')
         <hr style="margin:0;">
         @if (Route::currentRouteName() === 'resources.index')
-            @include('inc.tabbar')
-            <br><br>
-        @elseif (Route::currentRouteName() === 'dashboard.index')
-            @include('inc.tabbar')
-            <br><br>
-        @elseif (Route::currentRouteName() === 'activities.index')
             @include('inc.tabbar')
             <br><br>
         @elseif (Route::currentRouteName() === 'ranking.index')

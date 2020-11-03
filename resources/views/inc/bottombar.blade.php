@@ -21,7 +21,7 @@
                     @endif
                 </div>
                 <div class="bar-navigation item four">
-                    <a class="{{(Route::currentRouteName() === 'social.index') ? 'bar-navigation enabledicon2' : ''}}" href="/social"><img src="/storage/cover_image/baseline_supervisor_account_white_18dp.png" class="bar-navigation disabledicon" alt="social"></a>
+                    <a class="{{(Route::currentRouteName() === 'social.index') ? 'bar-navigation enabledicon2' : ''}}" href="/colleagues"><img src="/storage/cover_image/baseline_supervisor_account_white_18dp.png" class="bar-navigation disabledicon" alt="social"></a>
                     @if (Route::currentRouteName() === 'social.index')
                         <span class="bar-navigation enabledlabel">Social</span>
                     @endif
