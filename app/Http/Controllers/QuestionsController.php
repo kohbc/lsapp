@@ -196,4 +196,11 @@ class QuestionsController extends Controller
     {
         return view('questions.create')->with('quiz_id', $quiz_id);
     }
+
+    //A confirmation page before calling delete function
+    public function question_delete($question_id)
+    {
+        $question = Question::find($question_id);
+        return view('questions.question_delete')->with('question', $question);
+    }
 }

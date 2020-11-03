@@ -37,8 +37,7 @@ class ColleaguesController extends Controller
             $colleague->save();
         }
 
-        $colleagues = $user->colleagues->sortBy('score');
-
+        $colleagues = $user->colleagues->sortByDesc('score');
         return view('colleagues.index')->with('colleagues', $colleagues);
     }
 
@@ -49,8 +48,7 @@ class ColleaguesController extends Controller
      */
     public function create()
     {
-        //No Create function for Colleagues
-        return redirect('/colleagues')->with('error', 'Page no found');
+        return view('colleagues.create');
     }
 
     /**
@@ -67,13 +65,23 @@ class ColleaguesController extends Controller
 
         $email = $request->input('email');
         $find_user = User::where('email', $email)->first();
+        
         if($find_user == null){
-            return redirect('/colleagues')->with('error', 'This e-mail does not exist');
+            return redirect('/colleagues')->with('error', 'This user e-mail does not exist');
+        }
+
+        $user_id = auth()->user()->id;
+        $currentColleagues = User::find($user_id)->colleagues;
+
+        foreach($currentColleagues as $currentColleague){
+            if($currentColleague->colleague_id == $find_user->id){
+                return redirect('/colleagues')->with('error', 'This user e-mail is already a colleague');
+            }
         }
 
         //create a new Colleague
         $colleague = new Colleague;
-        $colleague->user_id = auth()->user()->id;
+        $colleague->user_id = $user_id;
         $colleague->colleague_id = $find_user->id;
         $colleague->colleague_name = $find_user->name;
         $colleague->colleague_score = $find_user->score;
