@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
+@import "@material/layout-grid/mdc-layout-grid";
+
 /* Bottom Navigation Bar */
 
 .bar-navigation {
@@ -54,6 +57,7 @@
     position: relative;
 
     /* Caption / Roboto Regular */
+    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     line-height: 45px;
@@ -162,7 +166,7 @@
     margin-top: 1px;
 
     /* H6 / Roboto Medium */
-    /* font-family: Roboto; */
+    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
@@ -206,6 +210,7 @@
     overflow-x: scroll;
     left:0;
     margin-bottom: 10px;
+    z-index: -1000;
 }
 
 .bar-tab.surface {
@@ -226,7 +231,7 @@
     bottom: 34.17%;
     
     /* Button / Roboto Medium */
-    /* font-family: Roboto; */
+    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -261,7 +266,7 @@
     bottom: 33.33%;
 
     /* Button / Roboto Medium */
-    /* font-family: Roboto; */
+    font-family: Roboto;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

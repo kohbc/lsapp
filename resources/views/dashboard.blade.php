@@ -11,7 +11,8 @@
                         <h3>Username: {{Auth::user()->name}} E-mail: {{Auth::user()->email}}</h3><br/>
                     </div>
                     @if(Auth::user()->level >= 2)
-                        <a href="/quizzes/create" class="btn btn-primary">Create Quiz</a>
+                            <a href="/quizzes/create" class="button-contained surface"><span class="button-contained label">Create Quiz</span></a>
+
                         <h3>Your Quizzes</h3>
                         @if(count($quizzes) > 0)
                             <table class="table table-striped">
