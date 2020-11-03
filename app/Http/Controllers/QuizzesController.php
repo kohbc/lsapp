@@ -192,6 +192,13 @@ class QuizzesController extends Controller
         }
 
         $quiz->delete();
-        return redirect('/quizzes')->with('success', 'Quiz Removed');
+        return redirect('/dashboard')->with('success', 'Quiz Removed');
+    }
+
+    //A confirmation page before calling delete function
+    public function quiz_delete($quiz_id)
+    {
+        $quiz = Quiz::find($quiz_id);
+        return view('quizzes.quiz_delete')->with('quiz', $quiz);
     }
 }

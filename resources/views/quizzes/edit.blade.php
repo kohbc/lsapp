@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="/dashboard" class="btn btn-default">Go Back</a>
     <h1>Edit Quiz</h1>
     {!! Form::open(['action' => ['QuizzesController@update', $quiz->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
@@ -32,13 +33,8 @@
                 @foreach($questions as $question)
                     <tr>
                         <td>{{$question->title}}</td>
-                        <td><a href="/questions/{{$question->id}}/edit">Edit</a></td>
-                        <td>
-                            {!!Form::open(['action' => ['QuestionsController@destroy', $question->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                {{Form::hidden('_method', 'DELETE')}}
-                                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                            {!!Form::close()!!}
-                        </td>
+                        <td><a href="/questions/{{$question->id}}/edit" class="btn btn-default">Edit</a></td>
+                        <td><a href="/question_delete/{{$question->id}}" class="btn btn-default">Delete</a></td>
                     </tr>
                 @endforeach
             </table>

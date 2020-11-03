@@ -23,13 +23,8 @@
                                 @foreach($quizzes as $quiz)
                                     <tr>
                                         <td>{{$quiz->title}}</td>
-                                        <td><a href="/quizzes/{{$quiz->id}}/edit">Edit</a></td>
-                                        <td>
-                                            {!!Form::open(['action' => ['QuizzesController@destroy', $quiz->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                                                {{Form::hidden('_method', 'DELETE')}}
-                                                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                                            {!!Form::close()!!}
-                                        </td>
+                                        <td><a href="/quizzes/{{$quiz->id}}/edit" class="btn btn-default">Edit</a></td>
+                                        <td><a href="/quiz_delete/{{$quiz->id}}" class="btn btn-default">Delete</a></td>
                                     </tr>
                                 @endforeach
                             </table>
