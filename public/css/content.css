@@ -322,3 +322,68 @@
     color: rgba(0, 0, 0, 0.6);
     mix-blend-mode: normal;
 }
+
+.card {
+    /* Cards / List 1-up / Image Left */
+    width: 328px;
+    height: 120px;
+
+    /* 2dp — Elevation */
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.14)), drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.12)), drop-shadow(0px 1px 5px rgba(0, 0, 0, 0.2));
+
+    /* All / Surface — Card */
+    background: #FAFAFA;
+}
+
+.card.image {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    height: 120px;
+    width: 120px;
+}
+
+.card.label {
+    /* Headline 5 */
+    position: absolute;
+    height: 29px;
+    left: 136px;
+    right: 16px;
+    top: 18px;
+
+    /* H5 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    /* identical to box height */
+
+    /* All / Black — High Emphasis */
+    color: rgba(0, 0, 0, 0.87);
+    mix-blend-mode: normal;
+}
+
+.card.context {
+    /* Body 2 */
+    position: absolute;
+    height: 40px;
+    left: 136px;
+    right: 16px;
+    top: 56.84px;
+
+    /* Body 2 / Roboto Regular */
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    /* or 143% */
+
+    letter-spacing: 0.25px;
+
+    /* All / Black — Medium Emphasis */
+    color: rgba(0, 0, 0, 0.6);
+    mix-blend-mode: normal;
+}
