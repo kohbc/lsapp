@@ -23,7 +23,7 @@ class CreateQuestionsTable extends Migration
             $table->string('answer');
             $table->string('explanation')->nullable();
             $table->unsignedInteger('quiz_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->foreign('quiz_id')->references('id')->on('quizzes');
         });
