@@ -18,7 +18,7 @@ class CreateResultsTable extends Migration
             $table->integer('mark')->default(0);
             $table->integer('count_que')->default(0);
             $table->unsignedInteger('quiz_id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('active')->default(0);
             $table->boolean('ace')->default(0);
             $table->foreign('quiz_id')->references('id')->on('quizzes');

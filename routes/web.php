@@ -19,6 +19,7 @@ Route::get('/leaderboard', 'PagesController@leaderboard');
 Route::resource('quizzes', 'QuizzesController');
 Route::resource('questions', 'QuestionsController');
 Route::resource('results', 'ResultsController');
+Route::resource('colleagues', 'ColleaguesController');
 Route::get('/create_result/{quiz_id}', 'ResultsController@create_result');
 Route::get('/create_question/{quiz_id}', 'QuestionsController@create_question');
 Route::get('/finish/{result_id}', 'ResultsController@finish');

@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->string('avatar');
             $table->string('avatar_original');
             $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
             $table->tinyInteger('level')->default('1');
             $table->Integer('score')->default('0');
             $table->rememberToken();
