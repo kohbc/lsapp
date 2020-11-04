@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="/results" class="button-contained button-contained label">Go Back</a>
     @if(count($answers) > 0)
         @foreach($answers as $answer)
             <div class=well>
@@ -37,6 +38,6 @@
     @endif
     @if($active == 1)
     <p>This Quiz is ongoing</p>
-    <a href="/quizzes/{{$quiz_id}}" class="btn btn-primary">Continue this Quiz</a>
+    <a href="/quizzes/{{$quiz_id}}" class="button-contained button-contained label">Continue this Quiz</a>
     @endif
 @endsection

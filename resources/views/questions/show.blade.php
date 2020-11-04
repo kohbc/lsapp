@@ -50,10 +50,10 @@
             @else
                 {{Form::hidden('answer_id', $answer->id)}}
             @endif
-            {{Form::submit('Save and Next', ['class' => 'btn btn-primary'])}}
+            {{Form::submit('Save and Next', ['class' => 'button-contained button-contained label'])}}
         {!! Form::close() !!}
     @else
         <p>End of the quiz</p>
-        <a href="/finish/{{$result->id}}" class="btn btn-primary">Finish the Quiz</a>
+        <a href="/finish/{{$result->id}}" class="button-contained button-contained label">Finish the Quiz</a>
     @endif
 @endsection

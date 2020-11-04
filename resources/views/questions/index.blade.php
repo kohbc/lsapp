@@ -2,7 +2,7 @@
 
 @section('content')
 @if(Auth::user()->level >= 2)
-    <a href="/quizzes/create" class="btn btn-primary">Create Quiz</a>
+    <a href="/quizzes/create" class="button-contained button-contained label">Create Quiz</a>
     <h3>Your Quizzes</h3>
     @if(count($quizzes) > 0)
         <table class="table table-striped">

@@ -10,5 +10,5 @@
             {{Form::hidden('_method', 'DELETE')}}
             {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
         {!!Form::close()!!}
-        <a href="/dashboard" class="btn btn-default">Go Back</a>
+        <a href="/dashboard" class="button-contained button-contained label">Go Back</a>
 @endsection
