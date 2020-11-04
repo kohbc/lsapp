@@ -21,13 +21,13 @@
                     @endif
                 </div>
                 <div class="bar-navigation item four">
-                    <a class="{{(Route::currentRouteName() === 'social.index') ? 'bar-navigation enabledicon2' : ''}}" href="/colleagues"><img src="/storage/cover_image/baseline_supervisor_account_white_18dp.png" class="bar-navigation disabledicon" alt="social"></a>
-                    @if (Route::currentRouteName() === 'social.index')
+                    <a class="{{(Route::currentRouteName() === 'colleagues.index') ? 'bar-navigation enabledicon2' : ''}}" href="/colleagues"><img src="/storage/cover_image/baseline_supervisor_account_white_18dp.png" class="bar-navigation disabledicon" alt="social"></a>
+                    @if (Route::currentRouteName() === 'colleagues.index')
                         <span class="bar-navigation enabledlabel">Social</span>
                     @endif
                 </div>
                 <div class="bar-navigation item five">
-                    <a class="{{(Route::currentRouteName() === 'ranking.index') ? 'bar-navigation enabledicon2' : ''}}" href="/ranking"><img src="/storage/cover_image/baseline_analytics_white_18dp.png" class="bar-navigation disabledicon" alt="ranking"></a> 
+                    <a class="{{(Route::currentRouteName() === 'ranking.index') ? 'bar-navigation enabledicon2' : ''}}" href="/leaderboard"><img src="/storage/cover_image/baseline_analytics_white_18dp.png" class="bar-navigation disabledicon" alt="ranking"></a> 
                     @if (Route::currentRouteName() === 'ranking.index')
                         <span class="bar-navigation enabledlabel">Ranking</span>
                     @endif

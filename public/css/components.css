@@ -18,9 +18,8 @@
     /* Button */
     position: absolute;
     height: 16px;
-    left: 16px;
-    right: 16px;
-    top: calc(50% - 16px/2 - 0.4px);
+    right: 5px;
+    top: calc(50% - 16px/1.5 - 0.4px);
 
     /* Button / Roboto Medium */
     font-family: Roboto;

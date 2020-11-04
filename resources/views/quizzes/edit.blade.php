@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/dashboard" class="btn btn-default">Go Back</a>
-    <h1>Edit Quiz</h1>
     {!! Form::open(['action' => ['QuizzesController@update', $quiz->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
             {{Form::label('title', 'Title')}}
