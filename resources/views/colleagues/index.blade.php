@@ -13,7 +13,7 @@ use App\User;
                 </div>
                 <div class="list item">
                     <img src="{{$user->avatar}}" class="list item image-list image">
-                    <p class="list item label">{{$user->name}}</p> 
+                    <p class="list item label">{{$user->name}}</p>
                     <p class="list item image-list context" style="right:113px;">Score: {{$user->score}}</p>
                     <a href="/colleague_delete/{{$user->id}}">
                         <img src="/storage/cover_image/baseline_clear_black_18dp.png" class="list item icon" alt="delete friend">
