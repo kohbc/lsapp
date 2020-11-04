@@ -16,7 +16,7 @@
                     <span class="bar-app title" style="width:120px;">My Account</span>
                 @elseif (Route::currentRouteName() === 'activities.index')
                     <span class="bar-app title" style="width:120px;">Activities</span>
-                @elseif (Route::currentRouteName() === 'social.index')
+                @elseif (Route::currentRouteName() === 'colleagues.index')
                     <span class="bar-app title" style="width:120px;">Colleagues</span>
                 @elseif (Route::currentRouteName() === 'ranking.index')
                     <span class="bar-app title" style="width:120px;">Leaderboard</span>
@@ -24,12 +24,16 @@
                     <span class="bar-app title" style="width:120px;">Quizzes</span>
                 @elseif (Route::currentRouteName() === 'quizzes.show')
                     <span class="bar-app title" style="width:120px;">{{$quiz->title}}</span>
+                @elseif (Route::currentRouteName() === 'results.index')
+                    <span class="bar-app title" style="width:120px;">Your Results</span>
+                @elseif (Route::currentRouteName() === 'quizzes.edit')
+                    <span class="bar-app title" style="width:120px;">Edit Quiz</span>
                 @endif
 
                 <img src="/storage/cover_image/baseline_search_white_18dp.png" class="bar-app icon search" alt="search">
                 <div>
                     <img src="/storage/cover_image/baseline_more_vert_white_18dp.png" class="bar-app icon overflow" alt="overflow" data-toggle="dropdown"/>
-                        <ul class="dropdown-menu pull-right">
+                        <ul class="dropdown-menu pull-right" style="z-index:1000;">
                             <span>&nbsp;&nbsp; More: </span>
                             <li><a href="/">TEA Preferences</a></li>
                             <li><a href="/">Contact Staff</a></li>

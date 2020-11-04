@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/services', 'PagesController@services');
-Route::get('/leaderboard', 'PagesController@leaderboard');
+Route::get('/leaderboard', 'PagesController@leaderboard')->name('ranking.index');
 Route::resource('quizzes', 'QuizzesController');
 Route::resource('questions', 'QuestionsController');
 Route::resource('results', 'ResultsController');
@@ -29,8 +29,6 @@ Route::resource('answers', 'AnswersController');
 Route::get('/resources', 'PagesController@resources')->name('resources.index');
 Route::get('/activities', 'PagesController@activities')->name('activities.index');
 Route::get('/account', 'PagesController@account')->name('account.index');
-Route::get('/social', 'PagesController@social')->name('social.index');
-Route::get('/ranking', 'PagesController@ranking')->name('ranking.index');
 Auth::routes(['reset' => false]);
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard.index');
 
