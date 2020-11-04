@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/dashboard" class="btn btn-default">Go Back</a>
+    <a href="/dashboard" class="button-contained button-contained label">Go Back</a>
     <h1>Edit Quiz</h1>
     {!! Form::open(['action' => ['QuizzesController@update', $quiz->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
         <div class="form-group">
@@ -21,7 +21,7 @@
     {!! Form::close() !!}
     <br/>
     <div class="panel-body">
-        <button-contained href="/create_question/{{$quiz->id}}" class="button-contained button-contained label">Create Question</button-contained>            
+        <a href="/create_question/{{$quiz->id}}" class="button-contained button-contained label">Create Question</a>            
         <h3>Your Questions</h3>
         @if(count($questions) > 0)
             <table class="table table-striped">
@@ -33,8 +33,8 @@
                 @foreach($questions as $question)
                     <tr>
                         <td>{{$question->title}}</td>
-                        <td><button-contained href="/questions/{{$question->id}}/edit" class="button-contained button-contained label">Edit</button-contained></td>
-                        <td><button-contained href=href="/question_delete/{{$question->id}}" class="button-contained button-contained label">Delete</button-contained></td>
+                        <td><a href="/questions/{{$question->id}}/edit" class="button-contained button-contained label">Edit</a></td>
+                        <td><a href=href="/question_delete/{{$question->id}}" class="button-contained button-contained label">Delete</a></td>
                     </tr>
                 @endforeach
             </table>
