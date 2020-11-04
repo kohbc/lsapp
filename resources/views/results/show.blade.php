@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/results" class="btn btn-default">Go Back</a>
     @if(count($answers) > 0)
         @foreach($answers as $answer)
             <div class=well>

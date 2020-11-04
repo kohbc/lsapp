@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="/colleagues" class="btn btn-default">Go Back</a>
     {!! Form::open(['action' => 'ColleaguesController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
     <div class="form-group">
         {{Form::label('email', 'Add Colleague by e-mail')}}
