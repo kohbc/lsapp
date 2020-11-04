@@ -15,10 +15,8 @@ class CreateColleaguesTable extends Migration
     {
         Schema::create('colleagues', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('colleague_id');
-            $table->string('colleague_name');
-            $table->Integer('colleague_score')->default('0');
+            $table->unsignedBigInteger('user_id');
             $table->foreign('colleague_id')->references('id')->on('users');
             $table->timestamps();
         });

@@ -1,10 +1,21 @@
+<?php
+use App\User;
+?>
 @extends('layouts.app')
 
 @section('content')
     @if(count($colleagues) > 0)
         @foreach($colleagues as $colleague)
             <div class=well>
-                <h3>{{$colleague->colleague_name}} ({{$colleague->colleague_score}})</h3> 
+                <div style="display: none;">
+                    {{$user = User::find($colleague->colleague_id)}}
+                </div>
+                <tr>
+                    <td>{{$user->avatar}}</td>
+                    <td><a href="/colleagues/{{$user->id}}">{{$user->name}}</a></td>
+                    <td>{{$user->score}}</td>
+                    <td><a href="/colleague_delete/{{$user->id}}" class="btn btn-default">Delete</a></td>
+                </tr>
             </div>
         @endforeach
     @else
