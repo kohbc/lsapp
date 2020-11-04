@@ -5,7 +5,7 @@
         <h1>Homepage</h1>
         <p>This is the laravel application from the "Laravel From Scratch" YouTube series</p>
         <p>
-            <a class="btn btn-primary btn-lg" href="/login" role="button">Login</a>
+            <a class="button-contained button-contained label" href="/login" role="button">Login</a>
             <!--<a class="btn btn-primary btn-lg" href="/register" role="button">Register</a>-->
         </p>
     </div>
