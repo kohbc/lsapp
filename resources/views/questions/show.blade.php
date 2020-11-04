@@ -50,7 +50,9 @@
             @else
                 {{Form::hidden('answer_id', $answer->id)}}
             @endif
-            {{Form::submit('Save and Next', ['class' => 'button-contained button-contained label'])}}
+            <div class="button-contained">
+                {{Form::submit('Save and Next', ['class' => 'button-contained label-text'])}}
+            </div>
         {!! Form::close() !!}
     @else
         <p>End of the quiz</p>
