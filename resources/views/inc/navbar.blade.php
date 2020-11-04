@@ -28,6 +28,10 @@
                     <span class="bar-app title" style="width:120px;">Your Results</span>
                 @elseif (Route::currentRouteName() === 'quizzes.edit')
                     <span class="bar-app title" style="width:120px;">Edit Quiz</span>
+                @elseif (Route::currentRouteName() === 'quizzes.create')
+                    <span class="bar-app title" style="width:120px;">Create Quiz</span>
+                @elseif (Route::currentRouteName() === 'questions.create')
+                    <span class="bar-app title" style="width:120px;">Create Question</span>
                 @endif
 
                 <img src="/storage/cover_image/baseline_search_white_18dp.png" class="bar-app icon search" alt="search">
