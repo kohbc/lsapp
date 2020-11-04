@@ -201,6 +201,16 @@ class QuestionsController extends Controller
     public function question_delete($question_id)
     {
         $question = Question::find($question_id);
+
+        if($question == null){
+            return redirect('/dashboard')->with('error', 'No such question');
+        }
+
+        //Check for correct user id
+        if(auth()->user()->id !== $question->user_id){
+            return redirect('/dashboard')->with('error', 'Unauthorized access');
+        }
+
         return view('questions.question_delete')->with('question', $question);
     }
 }
