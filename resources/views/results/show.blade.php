@@ -38,6 +38,6 @@
     @endif
     @if($active == 1)
     <p>This Quiz is ongoing</p>
-    <a href="/quizzes/{{$quiz_id}}" class="btn btn-primary">Continue this Quiz</a>
+    <button-contained href="/quizzes/{{$quiz_id}}" class="button-contained button-contained label">Continue this Quiz</button-contained>
     @endif
 @endsection

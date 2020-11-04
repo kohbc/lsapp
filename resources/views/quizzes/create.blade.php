@@ -15,6 +15,6 @@
             {{Form::label('youtube', 'YouTube Video')}}
             {{Form::text('youtube', '', ['class' => 'form-control', 'placeholder' => 'YouTube link here (optional)'])}}
         </div>
-        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Submit', ['class' => 'button-contained button-contained label'])}}
     {!! Form::close() !!}
 @endsection

@@ -33,6 +33,6 @@
         </div>
         {{Form::hidden('quiz_id', $question->quiz_id)}}
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Save', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Save', ['class' => 'button-contained button-contained label'])}}
     {!! Form::close() !!}
     @endsection

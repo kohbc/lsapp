@@ -17,11 +17,11 @@
             {{Form::text('youtube', $quiz->youtube, ['class' => 'form-control', 'placeholder' => 'YouTube'])}}
         </div>
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Save', ['class' => 'btn btn-primary'])}}
+        {{Form::submit('Save', ['class' => 'button-contained button-contained label'])}}
     {!! Form::close() !!}
     <br/>
     <div class="panel-body">
-        <a href="/create_question/{{$quiz->id}}" class="btn btn-primary">Create Question</a>
+        <button-contained href="/create_question/{{$quiz->id}}" class="button-contained button-contained label">Create Question</button-contained>            
         <h3>Your Questions</h3>
         @if(count($questions) > 0)
             <table class="table table-striped">
@@ -33,8 +33,8 @@
                 @foreach($questions as $question)
                     <tr>
                         <td>{{$question->title}}</td>
-                        <td><a href="/questions/{{$question->id}}/edit" class="btn btn-default">Edit</a></td>
-                        <td><a href="/question_delete/{{$question->id}}" class="btn btn-default">Delete</a></td>
+                        <td><button-contained href="/questions/{{$question->id}}/edit" class="button-contained button-contained label">Edit</button-contained></td>
+                        <td><button-contained href=href="/question_delete/{{$question->id}}" class="button-contained button-contained label">Delete</button-contained></td>
                     </tr>
                 @endforeach
             </table>

@@ -53,9 +53,9 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button-contained type="submit" class="button-contained button-contained label">
                                     {{ __('Login') }}
-                                </button>
+                                </button-contained>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <a href="/login/google" class="btn btn-primary">Sign in with Google</a>
+                            <button-contained href="/login/google" class="button-contained button-contained label">Sign in with Google</button-contained>
                         </div>
                     </form>
                 </div>
