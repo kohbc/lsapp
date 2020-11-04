@@ -144,7 +144,7 @@ class ColleaguesController extends Controller
      */
     public function destroy($id)
     {
-        //Delete the 
+        //Delete the colleague
         $user = User::find(auth()->user()->id);
         $delete_colleague = null;
         
