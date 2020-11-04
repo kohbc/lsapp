@@ -200,6 +200,16 @@ class QuizzesController extends Controller
     public function quiz_delete($quiz_id)
     {
         $quiz = Quiz::find($quiz_id);
+
+        if($quiz == null){
+            return redirect('/dashboard')->with('error', 'No such quiz');
+        }
+
+        //Check for correct user id
+        if(auth()->user()->id !== $quiz->user_id){
+            return redirect('/dashboard')->with('error', 'Unauthorized access');
+        }
+
         return view('quizzes.quiz_delete')->with('quiz', $quiz);
     }
 }

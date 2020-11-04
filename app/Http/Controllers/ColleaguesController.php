@@ -27,17 +27,8 @@ class ColleaguesController extends Controller
     {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        $colleagues = $user->colleagues;
-
-        //refresh colleagues score
-        foreach($colleagues as $colleague){
-            $find_coll = User::find($colleague->colleague_id);
-            $colleague->colleague_name = $find_coll->name;
-            $colleague->colleague_score = $find_coll->score;
-            $colleague->save();
-        }
-
         $colleagues = $user->colleagues->sortByDesc('score');
+    
         return view('colleagues.index')->with('colleagues', $colleagues);
     }
 
@@ -65,7 +56,8 @@ class ColleaguesController extends Controller
 
         $email = $request->input('email');
         $find_user = User::where('email', $email)->first();
-        
+
+        //Check if the email exist in the current users
         if($find_user == null){
             return redirect('/colleagues')->with('error', 'This user e-mail does not exist');
         }
@@ -73,6 +65,7 @@ class ColleaguesController extends Controller
         $user_id = auth()->user()->id;
         $currentColleagues = User::find($user_id)->colleagues;
 
+        //Check is the user already added the email as colleague
         foreach($currentColleagues as $currentColleague){
             if($currentColleague->colleague_id == $find_user->id){
                 return redirect('/colleagues')->with('error', 'This user e-mail is already a colleague');
@@ -83,8 +76,6 @@ class ColleaguesController extends Controller
         $colleague = new Colleague;
         $colleague->user_id = $user_id;
         $colleague->colleague_id = $find_user->id;
-        $colleague->colleague_name = $find_user->name;
-        $colleague->colleague_score = $find_user->score;
         $colleague->save();
 
         return redirect('/colleagues')->with('success', 'Colleague Added');
@@ -98,8 +89,8 @@ class ColleaguesController extends Controller
      */
     public function show($id)
     {
-        //No Show function for Colleagues
-        return redirect('/colleagues')->with('error', 'Page no found');
+        $colleague = User::find($id);
+        return view('colleagues.show')->with('colleague', $colleague);
     }
 
     /**
@@ -136,7 +127,46 @@ class ColleaguesController extends Controller
      */
     public function destroy($id)
     {
-        //No Delete function for Colleagues
-        return redirect('/colleagues')->with('error', 'Page no found');
+        //Delete the 
+        $user = User::find(auth()->user()->id);
+        $delete_colleague = null;
+        
+        //Check for correct colleague id
+        foreach($user->colleagues as $colleague){
+            if($colleague->colleague_id == $id){
+                $delete_colleague = $colleague;
+            }
+        }
+        //If no match, return with error
+        if($delete_colleague == null){
+            return redirect('/colleagues')->with('error', 'No such colleague');
+        }
+        
+        $delete_colleague->delete();
+
+        return redirect('/colleagues')->with('success', 'Colleague Removed');
     }
+
+    public function colleague_delete($colleague_id)
+    {
+        $user = User::find(auth()->user()->id);
+        $delete_colleague = null;
+
+        //Check for correct colleague id
+        foreach($user->colleagues as $colleague){
+            if($colleague->colleague_id == $colleague_id){
+                $delete_colleague = $colleague;
+            }
+        }
+
+        //If no match, return with error
+        if($delete_colleague == null){
+            return redirect('/colleagues')->with('error', 'No such colleague');
+        }
+        
+        //Return a delete confirmation page
+        $user = User::find($colleague_id);
+        return view('colleagues.colleague_delete')->with('colleague', $user);
+    }
+    
 }

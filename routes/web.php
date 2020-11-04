@@ -25,6 +25,7 @@ Route::get('/create_question/{quiz_id}', 'QuestionsController@create_question');
 Route::get('/finish/{result_id}', 'ResultsController@finish');
 Route::get('/quiz_delete/{quiz_id}', 'QuizzesController@quiz_delete');
 Route::get('/question_delete/{question_id}', 'QuestionsController@question_delete');
+Route::get('/colleague_delete/{colleague_id}', 'ColleaguesController@colleague_delete');
 Route::resource('answers', 'AnswersController');
 Route::get('/resources', 'PagesController@resources')->name('resources.index');
 Route::get('/activities', 'PagesController@activities')->name('activities.index');
