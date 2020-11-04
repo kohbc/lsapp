@@ -30,6 +30,6 @@
         
         {{Form::hidden('quiz_id', $quiz_id)}}
 
-        {{Form::submit('Submit', ['class' => 'button-contained button-contained label'])}}
+        {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection
