@@ -26,7 +26,8 @@ class QuizzesController extends Controller
      */
     public function index()
     {
-        $quizzes = Quiz::orderBy('type', 'desc')->paginate(5);
+        $quizzes = Quiz::orderBy('type', 'asc')->get();
+        // $quizzes = Quiz::orderBy('type', 'desc')->paginate(5);
         return view('quizzes.index')->with('quizzes', $quizzes);
     }
 

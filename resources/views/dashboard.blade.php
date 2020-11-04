@@ -8,11 +8,12 @@
                 <div class="panel-body">
                     <div class="col-md-4 col-sm-4">
                         <img src="{{Auth::user()->avatar}}">
-                        <h3>Username: {{Auth::user()->name}} E-mail: {{Auth::user()->email}}</h3><br/>
+                        <br><br>
+                        <p>Username: {{Auth::user()->name}} <br>E-mail: {{Auth::user()->email}}</p><br/>
                     </div>
                     @if(Auth::user()->level >= 2)
-                            <a href="/quizzes/create" class="button-contained surface"><span class="button-contained label">Create Quiz</span></a>
-
+                        <a href="/quizzes/create" class="button-contained surface"><span class="button-contained label">Create Quiz</span></a>
+                        <br><br>
                         <h3>Your Quizzes</h3>
                         @if(count($quizzes) > 0)
                             <table class="table table-striped">
