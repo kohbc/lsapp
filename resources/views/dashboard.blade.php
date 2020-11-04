@@ -23,8 +23,8 @@
                                 @foreach($quizzes as $quiz)
                                     <tr>
                                         <td>{{$quiz->title}}</td>
-                                        <td><a href="/quizzes/{{$quiz->id}}/edit" class="btn btn-default">Edit</a></td>
-                                        <td><a href="/quiz_delete/{{$quiz->id}}" class="btn btn-default">Delete</a></td>
+                                        <td><a href="/quizzes/{{$quiz->id}}/edit" class="button-contained button-contained label">Edit</a></td>
+                                        <td><a href="/quiz_delete/{{$quiz->id}}" class="button-contained button-contained label">Delete</a></td>
                                     </tr>
                                 @endforeach
                             </table>

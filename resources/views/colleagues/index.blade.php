@@ -10,5 +10,5 @@
     @else
         <p>No colleagues found</p>
     @endif
-    <a href="/colleagues/create" class="btn btn-default">Add new Colleague</a>
+    <a href="/colleagues/create" class="button-contained button-contained label">Add new Colleague</a>
 @endsection
