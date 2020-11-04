@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-row">
-                            <a href="/login/google" class="btn btn-primary">Sign in with Google</a>
+                            <a href="/login/google" class="button-contained button-contained label">Sign in with Google</a>
                         </div>
                     </form>
                 </div>
