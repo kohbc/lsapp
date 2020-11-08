@@ -32,18 +32,22 @@
                     <span class="bar-app title" style="width:120px;">Create Quiz</span>
                 @elseif (Route::currentRouteName() === 'questions.create')
                     <span class="bar-app title" style="width:120px;">Create Question</span>
+                @elseif (Route::currentRouteName() === 'results.show')
+                    <span class="bar-app title" style="width:120px;">Your Result</span>
+                @elseif (Route::currentRouteName() === 'login')
+                    <span class="bar-app title" style="width:120px;">My Account</span>
                 @endif
 
                 <img src="/storage/cover_image/baseline_search_white_18dp.png" class="bar-app icon search" alt="search">
                 <div>
                     <img src="/storage/cover_image/baseline_more_vert_white_18dp.png" class="bar-app icon overflow" alt="overflow" data-toggle="dropdown"/>
-                        <ul class="dropdown-menu pull-right" style="z-index:1000;">
+                        <ul class="dropdown-menu pull-right" style="z-index:1000;overflow:visible;">
                             <span>&nbsp;&nbsp; More: </span>
-                            <li><a href="/">TEA Preferences</a></li>
-                            <li><a href="/">Contact Staff</a></li>
-                            <li><a href="/">About TEA</a></li>
+                            <li><a href="/" style="z-index:1000;">TEA Preferences</a></li>
+                            <li><a href="/" style="z-index:1000;">Contact Staff</a></li>
+                            <li><a href="/" style="z-index:1000;">About TEA</a></li>
                             <li>
-                                <a href="{{ route('logout') }}"
+                                <a href="{{ route('logout') }}" style="z-index:1000;"
                                     onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
                                     Logout

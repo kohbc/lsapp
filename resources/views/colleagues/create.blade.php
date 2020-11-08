@@ -6,8 +6,6 @@
         {{Form::label('email', 'Add Colleague by e-mail')}}
         {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'Colleague e-mail'])}}
     </div>
-    <div class="button-contained">
-        {{Form::submit('Add', ['class' => 'button-contained label-text'])}}
-    </div>
+    {{Form::submit('Add', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
 @endsection

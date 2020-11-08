@@ -20,11 +20,7 @@
 <body>
     <div id="app">
         @include('inc.navbar')
-        @if (Route::currentRouteName() === 'resources.index')
-            <hr style="margin:0;">
-            @include('inc.tabbar')
-            <br><br>
-        @elseif (Route::currentRouteName() === 'ranking.index')
+        @if (Route::currentRouteName() === 'ranking.index')
             <hr style="margin:0;">
             @include('inc.tabbar')
             <br><br>
@@ -34,7 +30,7 @@
             @include('inc.messages')
             @yield('content')
         </div>
-        <br><br>
+        <br><br><br>
         @include('inc.bottombar')
     </div>
 

@@ -7,6 +7,7 @@
     width: 24px;
     height: 24px;
     right: 16px;
+    z-index: -1000;
 }
 .list {
     /* list container for lists of content */
@@ -30,6 +31,7 @@
     background: rgba(0, 0, 0, 0.12);
     margin-top: 10px;
     margin-bottom: 0;
+    z-index: -1000;
 }
 
 .list.item.icon {
@@ -39,7 +41,7 @@
     height: 24px;
     right: 16px;
     top: calc(50% - 24px/4);
-    z-index: -999;
+    /* z-index: -1000; */
 }
 
 .list.item.label {
@@ -74,7 +76,7 @@
     width: 40px;
     height: 40px;
     left: 16px;
-    top: calc(50% - 40px/2);
+    top: calc(50% - 40px/2.5);
 }
 
 .list.item.image-list.context {
@@ -83,6 +85,7 @@
     position: absolute;
     height: 20px;
     width: 295px;
+    z-index: -1000;
     /* left: 72px; */
     top: calc(50% - 20px/2 + 13.6px);
 

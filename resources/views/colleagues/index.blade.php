@@ -4,22 +4,26 @@ use App\User;
 @extends('layouts.app')
 
 @section('content')
-    <a href="/colleagues/create" class="button-contained button-contained label">Add new Colleague</a>
+    <a href="/colleagues/create" class="button-contained button-contained label" style="margin-left:82.5px;">Add new Colleague</a>
+    <br>
     @if(count($colleagues) > 0)
     <!-- KOH -->
-        @foreach($colleagues as $colleague)
-            <div class=well>
-                <div style="display: none;">
-                    {{$user = User::find($colleague->colleague_id)}}
-                </div>
-                <tr>
-                    <td>{{$user->avatar}}</td>
-                    <td><a href="/colleagues/{{$user->id}}">{{$user->name}}</a></td>
-                    <td>{{$user->score}}</td>
-                    <td><a href="/colleague_delete/{{$user->id}}" class="btn btn-default">Delete</a></td>
-                </tr>
-            </div>
-        @endforeach
+        <div class="list">
+            @foreach($colleagues as $colleague)
+                <div class="list item">
+                    <div style="display: none;">
+                        {{$user = User::find($colleague->colleague_id)}}
+                    </div>
+                    <tr>
+                        <td><img src="{{$user->avatar}}" class="list item image-list image"></td>
+                        <td><a href="/colleagues/{{$user->id}}" class="list item label">{{$user->name}}</a></td>
+                        <td><p class="list item image-list context" style="right:103px;">Score: {{$user->score}}</p></td>
+                        <td><a href="/colleague_delete/{{$user->id}}" class="list item icon"><img src="/storage/cover_image/baseline_clear_black_18dp.png" style="width:24px;height:24px;" alt="delete friend"></a></td>
+                    </tr>
+                    <hr class="list item divider">
+                </div><br><br><br><br>
+            @endforeach
+        </div>
 <!--
         <div class="list">
             @foreach($colleagues as $colleague)
