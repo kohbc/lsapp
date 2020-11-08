@@ -89,8 +89,25 @@ class ColleaguesController extends Controller
      */
     public function show($id)
     {
-        $colleague = User::find($id);
-        return view('colleagues.show')->with('colleague', $colleague);
+        //$id = colleague id to show
+        
+        $user = User::find(auth()->user()->id);
+
+        $show_colleague = null;
+        
+        //Check for correct colleague id
+        foreach($user->colleagues as $colleague){
+            if($colleague->colleague_id == $id){
+                $show_colleague = $colleague;
+            }
+        }
+        
+        //If no match, return with error
+        if($show_colleague == null){
+            return redirect('/colleagues')->with('error', 'No such colleague');
+        }
+
+        return view('colleagues.show')->with('colleague', $show_colleague);
     }
 
     /**
@@ -127,7 +144,7 @@ class ColleaguesController extends Controller
      */
     public function destroy($id)
     {
-        //Delete the 
+        //Delete the colleague
         $user = User::find(auth()->user()->id);
         $delete_colleague = null;
         
