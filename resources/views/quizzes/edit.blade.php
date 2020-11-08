@@ -19,7 +19,8 @@
     {!! Form::close() !!}
     <br/>
     <div class="panel-body">
-        <a href="/create_question/{{$quiz->id}}" class="button-contained button-contained label">Create Question</a>            
+        <a href="/create_question/{{$quiz->id}}" class="button-contained button-contained label">Create Question</a> &nbsp;
+        <a href="/dashboard" class="button-contained button-contained label">Save & Exit</a>
         <h3>Your Questions</h3>
         @if(count($questions) > 0)
             <table class="table table-striped">
@@ -32,7 +33,7 @@
                     <tr>
                         <td>{{$question->title}}</td>
                         <td><a href="/questions/{{$question->id}}/edit" class="button-contained button-contained label">Edit</a></td>
-                        <td><a href=href="/question_delete/{{$question->id}}" class="button-contained button-contained label">Delete</a></td>
+                        <td><a href="/question_delete/{{$question->id}}" class="button-delete">Delete</a></td>
                     </tr>
                 @endforeach
             </table>

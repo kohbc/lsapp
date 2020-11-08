@@ -8,24 +8,20 @@
             {{Form::text('title', $question->title, ['class' => 'form-control', 'placeholder' => 'Title'])}}
         </div>
         <div class="form-group">
-            {{Form::label('A', 'Option A')}}
-            {{Form::text('A', $question->A, ['class' => 'form-control', 'placeholder' => 'Option A'])}}
+            <input type="radio" name="answer" value="A" class="myRadio" {{($question->answer=="A")?"checked":""}}>
+            {{Form::text('A', $question->A, ['class' => 'foo2', 'placeholder' => 'A', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('B', 'Option B')}}
-            {{Form::text('B', $question->B, ['class' => 'form-control', 'placeholder' => 'Option B'])}}
+            <input type="radio" name="answer" value="B" class="myRadio" {{($question->answer=="B")?"checked":""}}>
+            {{Form::text('B', $question->B, ['class' => 'foo2', 'placeholder' => 'B', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('C', 'Option C')}}
-            {{Form::text('C', $question->C, ['class' => 'form-control', 'placeholder' => 'Option C'])}}
+            <input type="radio" name="answer" value="C" class="myRadio" {{($question->answer=="C")?"checked":""}}>
+            {{Form::text('C', $question->C, ['class' => 'foo2', 'placeholder' => 'C', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
-            {{Form::label('D', 'Option D')}}
-            {{Form::text('D', $question->D, ['class' => 'form-control', 'placeholder' => 'Option D'])}}
-        </div>
-        <div class="form-group">
-            {{Form::label('answer', 'Answer')}}
-            {{Form::text('answer', $question->answer, ['class' => 'form-control', 'placeholder' => 'answer'])}}
+            <input type="radio" name="answer" value="D" class="myRadio" {{($question->answer=="D")?"checked":""}}>
+            {{Form::text('D', $question->D, ['class' => 'foo2', 'placeholder' => 'D', 'rows' => 10, 'cols' => 35])}}
         </div>
         <div class="form-group">
             {{Form::label('explanation', 'Explanation')}}
@@ -33,6 +29,6 @@
         </div>
         {{Form::hidden('quiz_id', $question->quiz_id)}}
         {{Form::hidden('_method', 'PUT')}}
-        {{Form::submit('Save', ['class' => 'button-contained button-contained label'])}}
+        {{Form::submit('Save', ['class' => 'btn btn-primary'])}}
     {!! Form::close() !!}
     @endsection

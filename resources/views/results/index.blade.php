@@ -10,7 +10,7 @@
                 @else
                     <p class="list item image-list image">{{$result->mark}}/{{$result->count_que}}</p>
                 @endif
-                <p class="list item image-list context" style="text-align:right;">Answered on {{$result->created_at}}</p>
+                <p class="list item image-list context" style="text-align:right;padding-top:5px;padding-right:20px;">Answered on {{$result->created_at->format('Y-m-d')}} {{$result->created_at->format('H:i')}}</p>
                 <img src="/storage/cover_image/baseline_keyboard_arrow_right_black_18dp.png" class="list item icon" alt="next">
                 <hr class="list item divider">
             </div><br><br><br><br>
