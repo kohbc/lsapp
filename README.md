@@ -76,6 +76,8 @@ Add the following lines to the bottom of the file:
 ## Using TEA
 
 In chrome, In Chrome go to the URL http://tea.example.com/ 
+
 Press f12 and then press ctrl+shift+m to set the view
+
 Make sure the resolution of the app is 375 x 765
 
