@@ -2,6 +2,9 @@
 
 TEA App
 
+## Archive
+This page has been archive. If you have any questions, please contact via kohboonchun@hotmail.com
+
 ## Preface
 
 TEA App is currently using an AWS Server but still requires a number of 3rd pary software as it is built using the laravel framework with xampp, apache and php, this means there is quite a large set up process to get it up and running.
