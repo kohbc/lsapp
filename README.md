@@ -3,7 +3,7 @@
 TEA App
 
 ## Archive
-This page has been archive. If you have any questions, please contact via kohboonchun@hotmail.com
+This repository has been archive. Please contact kohboonchun@hotmail.com if you have any question or problem.
 
 ## Preface
 
